@@ -1,0 +1,164 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@example.com",
+      "name": "Admin User",
+      "password": "123456",
+      "householdId": 1
+    },
+    {
+      "id": 2,
+      "email": "user@example.com",
+      "name": "House Member",
+      "password": "123456",
+      "householdId": 1
+    }
+  ],
+
+  "households": [
+    {
+      "id": 1,
+      "name": "My Smart Home",
+      "ownerId": 1
+    }
+  ],
+
+  "inventory": [
+    {
+      "id": 1,
+      "name": "Молоко 2.5%",
+      "quantity": 1,
+      "unit": "L",
+      "barcode": "4820001111111",
+      "location": "Fridge",
+      "expiry": "2025-12-03"
+    },
+    {
+      "id": 2,
+      "name": "Хліб білий",
+      "quantity": 0,
+      "unit": "pcs",
+      "barcode": "4820002222222",
+      "location": "Kitchen Shelf",
+      "expiry": "2025-11-29"
+    },
+    {
+      "id": 3,
+      "name": "Яйця",
+      "quantity": 8,
+      "unit": "pcs",
+      "barcode": "4820003333333",
+      "location": "Fridge",
+      "expiry": "2025-12-01"
+    },
+    {
+      "id": 4,
+      "name": "Миючий засіб для посуду",
+      "quantity": 0.2,
+      "unit": "L",
+      "barcode": "4820004444444",
+      "location": "Cleaning Cabinet",
+      "expiry": null
+    }
+  ],
+
+  "shoppingLists": [
+    {
+      "id": 1,
+      "createdBy": 1,
+      "createdAt": "2025-11-29",
+      "items": [
+        { "name": "Хліб білий", "qty": 1, "checked": false },
+        { "name": "Молоко", "qty": 2, "checked": false },
+        { "name": "Миючий засіб", "qty": 1, "checked": true }
+      ]
+    }
+  ],
+
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Прибрати кухню",
+      "description": "Плита, стіл, винести сміття",
+      "priority": "high",
+      "dueDate": "2025-11-30",
+      "assignedTo": 1,
+      "status": "pending",
+      "recurrence": "weekly"
+    },
+    {
+      "id": 2,
+      "title": "Полити рослини",
+      "description": "",
+      "priority": "medium",
+      "dueDate": "2025-11-29",
+      "assignedTo": 2,
+      "status": "completed",
+      "recurrence": "every-3-days"
+    },
+    {
+      "id": 3,
+      "title": "Заміна лампочки в коридорі",
+      "description": "Лампочка E27",
+      "priority": "low",
+      "dueDate": "2025-12-01",
+      "assignedTo": 1,
+      "status": "pending",
+      "recurrence": null
+    }
+  ],
+
+  "receipts": [
+    {
+      "id": 1,
+      "uploadedBy": 1,
+      "date": "2025-11-27",
+      "imageUrl": "receipt_1.jpg",
+      "parsed": {
+        "items": [
+          { "name": "Молоко 2.5%", "qty": 1, "price": 42 },
+          { "name": "Хліб білий", "qty": 1, "price": 28 },
+          { "name": "Яйця 10 шт", "qty": 1, "price": 75 }
+        ],
+        "total": 145
+      }
+    }
+  ],
+
+  "expenses": [
+    {
+      "id": 1,
+      "amount": 145,
+      "category": "Food",
+      "date": "2025-11-27",
+      "note": "Продукти з Сільпо",
+      "householdId": 1
+    },
+    {
+      "id": 2,
+      "amount": 950,
+      "category": "Utilities",
+      "date": "2025-11-15",
+      "note": "Електроенергія",
+      "householdId": 1
+    }
+  ],
+
+  "calendarEvents": [
+    {
+      "id": 1,
+      "title": "Генеральне прибирання",
+      "date": "2025-12-05",
+      "description": "Кухня + ванна",
+      "assignedTo": [1, 2]
+    },
+    {
+      "id": 2,
+      "title": "Оплатити інтернет",
+      "date": "2025-11-30",
+      "description": "",
+      "assignedTo": [1]
+    }
+  ]
+}

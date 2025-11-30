@@ -1,0 +1,21 @@
+<div class="login-container">
+      <mat-card>
+        <h1>Вхід</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" required>
+            <mat-error *ngIf="loginForm.get('email')?.invalid">Введіть коректний email</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Пароль</mat-label>
+            <input matInput formControlName="password" type="password" required>
+            <mat-error *ngIf="loginForm.get('password')?.invalid">Введіть пароль</mat-error>
+          </mat-form-field>
+ 
+          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Увійти</button>
+        </form>
+        <p>Немає акаунту? <a routerLink="/register">Зареєструватися</a></p>
+    </mat-card>
+</div>
