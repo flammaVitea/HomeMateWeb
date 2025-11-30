@@ -1,54 +1,43 @@
 import { Routes } from '@angular/router';
+import { PublicLayout } from './layout/public-layout/public-layout';
+import { MainLayout } from './layout/main-layout/main-layout';
 import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
 
-  // --- AUTH без layout ---
+  // ---------- PUBLIC ROUTES ----------
   {
-    path: 'login',
-    loadComponent: () =>
-      import('./features/auth/login/login').then(m => m.LoginComponent)
-  },
-  {
-    path: 'register',
-    loadComponent: () =>
-      import('./features/auth/register/register').then(m => m.RegisterComponent)
+    path: 'auth',
+    component: PublicLayout,
+    children: [
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./features/auth/login/login').then(m => m.LoginComponent)
+      },
+      {
+        path: 'register',
+        loadComponent: () =>
+          import('./features/auth/register/register').then(m => m.RegisterComponent)
+      },
+      { path: '**', redirectTo: 'login' }
+    ]
   },
 
-  // --- APP з layout ---
+  // ---------- PRIVATE ROUTES ----------
   {
     path: '',
+    component: MainLayout,
     canActivate: [AuthGuard],
-    loadComponent: () =>
-      import('./app').then(m => m.App),
     children: [
       {
         path: '',
         loadComponent: () =>
-          import('./features/dashboard/dashboard')
-            .then(m => m.DashboardComponent)
-      },
-      {
-        path: 'budget',
-        loadComponent: () =>
-          import('./features/budget/budget/budget')
-            .then(m => m.Budget)
-      },
-      {
-        path: 'calendar',
-        loadComponent: () =>
-          import('./features/calendar/calendar/calendar')
-            .then(m => m.Calendar)
-      },
-      {
-        path: 'shopping',
-        loadComponent: () =>
-          import('./features/shopping/shopping/shopping')
-            .then(m => m.Shopping)
+          import('./features/dashboard/dashboard').then(m => m.DashboardComponent)
       }
     ]
   },
 
-  // fallback
-  { path: '**', redirectTo: '' }
+  // Default redirect
+  { path: '**', redirectTo: 'auth/login' }
 ];
