@@ -1,8 +1,8 @@
-    <mat-toolbar color="primary">
-      <span>HomeMate</span>
+<mat-toolbar color="primary">
+  <span>HomeMate</span>
 
-      <span class="spacer"></span>
+  <span class="spacer"></span>
 
-      <button mat-button routerLink="/">Dashboard</button>
-      <button mat-button routerLink="/login">Вийти</button>
-    </mat-toolbar>
+  <button mat-button routerLink="/">Dashboard</button>
+  <button mat-button (click)="logout()">Вийти</button>
+</mat-toolbar>
