@@ -4,7 +4,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
+import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth';
 
 @Component({
@@ -16,6 +17,7 @@ import { AuthService } from '../../../core/services/auth';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
     RouterModule
   ],
   templateUrl: './register.html',
@@ -25,23 +27,36 @@ export class RegisterComponent {
   registerForm: FormGroup;
   error = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      inviteCode: ['', Validators.required], // поле коду запрошення
+      gender: ['', Validators.required],       // нове поле
+      avatarUrl: ['']                           // необов’язкове поле
     });
   }
 
   async onSubmit() {
-    if (this.registerForm.valid) {
-      const { name, email, password } = this.registerForm.value;
-      const success = await this.authService.register(name, email, password);
-      if (success) {
-        window.location.href = '/'; // редірект на Dashboard
-      } else {
-        this.error = 'Користувач з таким email вже існує';
-      }
+    if (this.registerForm.invalid) return;
+
+    try {
+      await this.authService.register(
+        this.registerForm.value.name,
+        this.registerForm.value.email,
+        this.registerForm.value.password,
+        this.registerForm.value.inviteCode,
+        this.registerForm.value.gender,
+        this.registerForm.value.avatarUrl
+      );
+
+
+      // редірект після успішної реєстрації
+      this.router.navigate(['/auth/login']);
+    } catch (err: any) {
+      this.error = err.message || 'Помилка при реєстрації';
+      alert(this.error);
     }
   }
 }

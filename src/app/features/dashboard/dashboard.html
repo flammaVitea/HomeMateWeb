@@ -1,27 +1,64 @@
 <div class="dashboard">
 
-  <h2>Вітаю, {{ user.name }} 👋</h2>
+  <!-- === ТВОЯ КАРТКА === -->
+  <mat-card class="user-card">
+    <div class="user-info">
+      <img [src]="user.avatarUrl" alt="avatar" class="user-avatar" />
+
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.email }}</p>
+      <span class="role-badge" [class.owner]="user.role === 'owner'">
+        {{ user.role === 'owner' ? 'Власник' : 'Учасник' }}
+      </span>
+      <div class="invite-code" *ngIf="user.role === 'owner'">
+        <p>Код запрошення для нових членів сім'ї:</p>
+        <h3>{{ inviteCode }}</h3>
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- === ЧЛЕНИ СІМ'Ї === -->
+  <h3 class="section-title">Члени сім'ї</h3>
+
+  <div class="family-grid">
+    <mat-card class="family-card" *ngFor="let member of familyMembers">
+      <img [src]="member.avatarUrl" class="avatar" />
+      <h3>{{ member.name }}</h3>
+      <p>{{ member.email }}</p>
+      <p>{{ member.gender === 'male' ? 'Чоловік' : 'Жінка' }}</p>
+    </mat-card>
+  </div>
+
+  <!-- === ГОЛОВНІ МОДУЛІ === -->
+  <h3 class="section-title">Функції дому</h3>
 
   <div class="grid">
+
     <mat-card class="card">
-      <h3>🛒 Список покупок</h3>
-      <p>Переглянути або додати товари</p>
+      <span class="icon material-icons">shopping_cart</span>
+      <h3>Список покупок</h3>
+      <p>Позицій: {{ shoppingCount }}</p>
     </mat-card>
 
     <mat-card class="card">
-      <h3>📅 Календар дому</h3>
-      <p>Ваші події та графік</p>
+      <span class="icon material-icons">event</span>
+      <h3>Календар дому</h3>
+      <p>Найближча подія: {{ calendarDate | date:'longDate':'':'uk' }}</p>
     </mat-card>
 
     <mat-card class="card">
-      <h3>💰 Бюджет</h3>
-      <p>Витрати, платежі, економія</p>
+      <span class="icon material-icons">savings</span>
+      <h3>Бюджет</h3>
+      <p>Виділено: {{ budgetAllocated }} ₴</p>
+      <p>Витрачено: {{ budgetSpent }} ₴</p>
     </mat-card>
 
     <mat-card class="card">
-      <h3>🧹 Завдання</h3>
-      <p>Побутові роботи на день</p>
+      <span class="icon material-icons">check_circle</span>
+      <h3>Завдання</h3>
+      <p>{{ tasksCount }} активних завдань</p>
     </mat-card>
+
   </div>
 
 </div>

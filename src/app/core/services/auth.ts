@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import * as bcrypt from 'bcryptjs';
 import { firstValueFrom } from 'rxjs';
 
 export interface User {
@@ -10,6 +11,8 @@ export interface User {
   name: string;
   password: string;
   householdId: number;
+  gender: string;
+  avatarUrl?: string;
 }
 
 @Injectable({
@@ -21,39 +24,61 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   // Логін користувача
-  async login(email: string, password: string): Promise<boolean> {
-    const users: User[] = await firstValueFrom(this.http.get<User[]>(`${this.api}/users`));
-    const user = users.find(u => u.email === email && u.password === password);
+async login(email: string, password: string): Promise<boolean> {
+  const users: User[] = await firstValueFrom(this.http.get<User[]>(`${this.api}/users`));
+  const user = users.find(u => u.email === email);
 
-    if (user) {
-      localStorage.setItem('token', 'FAKE-TOKEN-123');
-      localStorage.setItem('user', JSON.stringify(user));
-      return true;
-    }
-    return false;
-  }
+  if (!user) return false;
 
-  // Реєстрація нового користувача
-  async register(name: string, email: string, password: string): Promise<boolean> {
-    const users: User[] = await firstValueFrom(this.http.get<User[]>(`${this.api}/users`));
-    if (users.find(u => u.email === email)) {
-      return false; // email вже існує
-    }
+  // Перевірка хешу
+  const isValid = bcrypt.compareSync(password, user.password);
 
-    const newUser: User = {
-      id: (users.length + 1).toString(),
-      name,
-      email,
-      password,
-      householdId: 1 // можна зробити динамічно пізніше
-    };
-
-    await firstValueFrom(this.http.post(`${this.api}/users`, newUser));
-
+  if (isValid) {
     localStorage.setItem('token', 'FAKE-TOKEN-123');
-    localStorage.setItem('user', JSON.stringify(newUser));
+    localStorage.setItem('user', JSON.stringify(user));
     return true;
   }
+
+  return false;
+}
+
+
+async register(name: string, email: string, password: string, inviteCode: string, gender: any, avatarUrl: any): Promise<boolean> {
+  const users: User[] = await firstValueFrom(this.http.get<User[]>(`${this.api}/users`));
+
+  // Перевірка унікальності email
+  if (users.find(u => u.email === email)) {
+    return false; // email вже існує
+  }
+
+  // Перевірка inviteCode
+  const households: any[] = await firstValueFrom(this.http.get<any[]>(`${this.api}/households?inviteCode=${inviteCode}`));
+  if (!households || households.length === 0) {
+    throw new Error('Невірний код запрошення');
+  }
+
+  const householdId = households[0].id;
+
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
+  const newUser: User = {
+    id: (users.length + 1).toString(),
+    name,
+    email,
+    password: hashedPassword,
+    householdId: householdId,
+    gender: gender,       // нове поле
+    avatarUrl: avatarUrl
+  };
+
+  await firstValueFrom(this.http.post(`${this.api}/users`, newUser));
+
+  localStorage.setItem('token', 'FAKE-TOKEN-123');
+  localStorage.setItem('user', JSON.stringify(newUser));
+  return true;
+}
+
+
 
   logout() {
     localStorage.removeItem('token');

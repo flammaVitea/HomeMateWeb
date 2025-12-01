@@ -28,6 +28,7 @@
     "@angular/material": "^20.2.14",
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
+    "bcryptjs": "^3.0.3",
     "json-server": "^1.0.0-beta.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
