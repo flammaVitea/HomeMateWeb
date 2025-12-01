@@ -41,15 +41,26 @@
       "name": "Test1234",
       "email": "user123@example.com",
       "password": "$2b$10$scXGsdiYKGil2EpgoGYnVOqyuJu39h1Qr5RIG5UCXLpkiM8dYbfYa",
-      "householdId": 1
+      "householdId": 1,
+      "gender": "male",
+      "avatarUrl": "https://i.pravatar.cc/150?img=13"
+    },
+    {
+      "id": "6",
+      "name": "test-code",
+      "email": "test123@a.a",
+      "password": "$2b$10$30rJxMn4oA/ovH2rct3DieHwNR1zj.IrcG4dcz/Vlt141A0V1Tx4G",
+      "householdId": "1",
+      "gender": "male",
+      "avatarUrl": ""
     }
   ],
   "households": [
     {
-      "id": 1,
+      "id": "1",
       "name": "My Smart Home",
       "ownerId": 1,
-      "inviteCode": "ABCD12"
+      "inviteCode": "TW52CE"
     }
   ],
   "inventory": [
