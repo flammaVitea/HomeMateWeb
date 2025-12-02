@@ -6,13 +6,14 @@ import { DashboardService } from '../../core/services/dashboard';
 import { Household } from '../../core/services/household';
 import localeUk from '@angular/common/locales/uk';
 import { registerLocaleData } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 registerLocaleData(localeUk);
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatCardModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.scss'],
   providers: [
@@ -39,18 +40,41 @@ export class DashboardComponent implements OnInit {
 
   async ngOnInit() {
 
-    // Члени сім'ї
+    // household info
+    const hh = await this.household.getHousehold(this.user.householdId);
+    
+    // встановлюємо роль користувача
+    this.user.role = hh.ownerId === Number(this.user.id) ? 'owner' : 'member';
+
+    // якщо owner → генеруємо inviteCode
+    if (this.user.role === 'owner') {
+      this.inviteCode = await this.household.setInviteCode(this.user.householdId);
+    } else {
+      // для звичайних учасників просто показуємо поточний код
+      this.inviteCode = hh.inviteCode;
+    }
+
+    // --- решта як є ---
     this.familyMembers = await this.familyService.getMembers(this.user.householdId);
 
-    // Dashboard статистика
-    const dashboardData = await this.dashboardService.getDashboardData(this.user.id, this.user.householdId);
+    const dashboardData = await this.dashboardService.getDashboardData(
+      this.user.id,
+      this.user.householdId
+    );
+
     this.shoppingCount = dashboardData.shoppingCount;
     this.calendarDate = dashboardData.calendarDate;
     this.budgetAllocated = dashboardData.budgetAllocated;
     this.budgetSpent = dashboardData.budgetSpent;
     this.tasksCount = dashboardData.tasksCount;
+  }
 
-    // Генеруємо і зберігаємо код запрошення
+  async generateNewCode() {
     this.inviteCode = await this.household.setInviteCode(this.user.householdId);
+  }
+
+  copyCode() {
+    navigator.clipboard.writeText(this.inviteCode);
+    alert('Код скопійовано!');
   }
 }
