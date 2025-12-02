@@ -1,5 +1,6 @@
+// src/app/features/auth/register/register.ts
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -8,9 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth';
-import { HttpClient } from '@angular/common/http';
 import { NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -31,14 +30,15 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./register.scss']
 })
 export class RegisterComponent {
-  mode: 'join' | 'create' = 'join';
+  mode: 'join' | 'create' = 'join'; // поточний режим форми
 
   joinForm: FormGroup;
   createForm: FormGroup;
 
   error = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    // Форма приєднання до існуючого будинку
     this.joinForm = fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -48,6 +48,7 @@ export class RegisterComponent {
       avatarUrl: ['']
     });
 
+    // Форма створення нового будинку
     this.createForm = fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -58,6 +59,7 @@ export class RegisterComponent {
     });
   }
 
+  // Приєднання до існуючого будинку
   async onJoinSubmit() {
     if (this.joinForm.invalid) return;
 
@@ -77,8 +79,9 @@ export class RegisterComponent {
     }
   }
 
+  // Створення нового будинку
   async onCreateSubmit() {
-  if (this.createForm.invalid) return;
+    if (this.createForm.invalid) return;
 
     try {
       await this.authService.createHouse(
@@ -89,12 +92,16 @@ export class RegisterComponent {
         this.createForm.value.gender,
         this.createForm.value.avatarUrl
       );
-
       this.router.navigate(['/auth/login']);
     } catch (err: any) {
       this.error = err.message || 'Помилка при створенні будинку';
       alert(this.error);
     }
   }
-}
 
+  // Перемикання режиму форми
+  setMode(mode: 'join' | 'create') {
+    this.mode = mode;
+    this.error = '';
+  }
+}

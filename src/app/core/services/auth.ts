@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
 import { firstValueFrom } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
+
 
 export interface User {
   id: string;
@@ -79,51 +81,52 @@ async register(name: string, email: string, password: string, inviteCode: string
 }
 
 // Додаємо метод у AuthService
-async createHouse(
-  name: string,
-  email: string,
-  password: string,
-  houseName: string,
-  gender: string,
-  avatarUrl?: string
-): Promise<boolean> {
-  // Отримуємо список користувачів, щоб перевірити унікальність email
+async createHouse(name: string, email: string, password: string, houseName: string, gender: string, avatarUrl: string) {
+  // 1. Отримуємо список користувачів
   const users: User[] = await firstValueFrom(this.http.get<User[]>(`${this.api}/users`));
-  if (users.find(u => u.email === email)) {
-    throw new Error('Користувач з таким email вже існує');
-  }
 
-  // Створюємо новий будинок
-  const newHouse = await firstValueFrom(
-    this.http.post<any>(`${this.api}/households`, { name: houseName, inviteCode: this.generateInviteCode() })
-  );
-
-  const hashedPassword = bcrypt.hashSync(password, 10);
-
+  // 2. Створюємо нового користувача
   const newUser: User = {
     id: (users.length + 1).toString(),
     name,
     email,
-    password: hashedPassword,
-    householdId: newHouse.id,
+    password: bcrypt.hashSync(password, 10),
+    householdId: 0, // тимчасово
     gender,
     avatarUrl
   };
 
-  // Додаємо користувача
   await firstValueFrom(this.http.post(`${this.api}/users`, newUser));
 
+  // 3. Створюємо новий будинок з ownerId = id нового користувача
+  const households: any[] = await firstValueFrom(this.http.get<any[]>(`${this.api}/households`));
+  const newHouseId = households.length + 1; // число, як у старих будинках
+
+  const newHouse = {
+    id: (Math.floor(Math.random() * 10000)).toString(), // рядок
+    name: houseName,
+    ownerId: newUser.id,
+    inviteCode: this.generateInviteCode()
+  };
+
+
+  await firstValueFrom(this.http.post(`${this.api}/households`, newHouse));
+
+  // 4. Прив'язуємо користувача до будинку
+  newUser.householdId = newHouseId;
+  await firstValueFrom(this.http.put(`${this.api}/users/${newUser.id}`, newUser));
+
+  // 5. Зберігаємо токен та дані
   localStorage.setItem('token', 'FAKE-TOKEN-123');
   localStorage.setItem('user', JSON.stringify(newUser));
 
   return true;
 }
 
-// Генерація випадкового inviteCode для нового будинку
+// Допоміжна функція генерації inviteCode
 private generateInviteCode(): string {
   return Math.random().toString(36).substring(2, 8).toUpperCase();
 }
-
 
   logout() {
     localStorage.removeItem('token');

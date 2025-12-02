@@ -2,13 +2,14 @@
   <mat-card>
     <h2>Реєстрація</h2>
 
-    <div class="toggle-buttons">
-      <button mat-button color="primary" (click)="mode='join'" [disabled]="mode==='join'">Приєднатися до будинку</button>
-      <button mat-button color="accent" (click)="mode='create'" [disabled]="mode==='create'">Створити новий будинок</button>
-    </div>
+    <!-- Перемикач режиму -->
+    <mat-button-toggle-group [(ngModel)]="mode">
+      <mat-button-toggle value="join">Приєднатися до будинку</mat-button-toggle>
+      <mat-button-toggle value="create">Створити новий будинок</mat-button-toggle>
+    </mat-button-toggle-group>
 
     <!-- Форма приєднання -->
-    <form *ngIf="mode==='join'" [formGroup]="joinForm" (ngSubmit)="onJoinSubmit()">
+    <form *ngIf="mode === 'join'" [formGroup]="joinForm" (ngSubmit)="onJoinSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Ім’я</mat-label>
         <input matInput formControlName="name" />
@@ -42,11 +43,11 @@
         <input matInput formControlName="avatarUrl" placeholder="https://..." />
       </mat-form-field>
 
-      <button mat-raised-button color="primary" type="submit">Приєднатися</button>
+      <button mat-raised-button color="primary" type="submit">Зареєструватися</button>
     </form>
 
     <!-- Форма створення нового будинку -->
-    <form *ngIf="mode==='create'" [formGroup]="createForm" (ngSubmit)="onCreateSubmit()">
+    <form *ngIf="mode === 'create'" [formGroup]="createForm" (ngSubmit)="onCreateSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Ім’я</mat-label>
         <input matInput formControlName="name" />
@@ -80,8 +81,10 @@
         <input matInput formControlName="avatarUrl" placeholder="https://..." />
       </mat-form-field>
 
-      <button mat-raised-button color="accent" type="submit">Створити будинок</button>
+      <button mat-raised-button color="primary" type="submit">Створити будинок</button>
     </form>
 
+    <!-- Вивід помилки -->
+    <p *ngIf="error" class="error">{{ error }}</p>
   </mat-card>
 </div>
