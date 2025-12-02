@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "json-server": "json-server --watch db.json --port 3000"
+    "json-server": "json-server --watch db/db.json --port 3000",
+    "dev": "concurrently \"npm run json-server\" \"npm start\""
   },
   "prettier": {
     "overrides": [
@@ -21,12 +22,12 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cdk": "^20.2.14",
+    "@angular/cdk": "^21.0.1",
     "@angular/common": "^21.0.2",
     "@angular/compiler": "^21.0.2",
     "@angular/core": "^21.0.2",
     "@angular/forms": "^21.0.2",
-    "@angular/material": "^20.2.14",
+    "@angular/material": "^21.0.1",
     "@angular/platform-browser": "^21.0.2",
     "@angular/router": "^21.0.2",
     "bcryptjs": "^3.0.3",

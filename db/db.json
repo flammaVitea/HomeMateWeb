@@ -46,10 +46,10 @@
   ],
   "households": [
     {
-      "id": 1,
+      "id": "1",
       "name": "My Smart Home",
       "ownerId": 1,
-      "inviteCode": "ABCD12"
+      "inviteCode": "AVY8W3"
     }
   ],
   "inventory": [
