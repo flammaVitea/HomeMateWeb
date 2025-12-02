@@ -78,6 +78,51 @@ async register(name: string, email: string, password: string, inviteCode: string
   return true;
 }
 
+// Додаємо метод у AuthService
+async createHouse(
+  name: string,
+  email: string,
+  password: string,
+  houseName: string,
+  gender: string,
+  avatarUrl?: string
+): Promise<boolean> {
+  // Отримуємо список користувачів, щоб перевірити унікальність email
+  const users: User[] = await firstValueFrom(this.http.get<User[]>(`${this.api}/users`));
+  if (users.find(u => u.email === email)) {
+    throw new Error('Користувач з таким email вже існує');
+  }
+
+  // Створюємо новий будинок
+  const newHouse = await firstValueFrom(
+    this.http.post<any>(`${this.api}/households`, { name: houseName, inviteCode: this.generateInviteCode() })
+  );
+
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
+  const newUser: User = {
+    id: (users.length + 1).toString(),
+    name,
+    email,
+    password: hashedPassword,
+    householdId: newHouse.id,
+    gender,
+    avatarUrl
+  };
+
+  // Додаємо користувача
+  await firstValueFrom(this.http.post(`${this.api}/users`, newUser));
+
+  localStorage.setItem('token', 'FAKE-TOKEN-123');
+  localStorage.setItem('user', JSON.stringify(newUser));
+
+  return true;
+}
+
+// Генерація випадкового inviteCode для нового будинку
+private generateInviteCode(): string {
+  return Math.random().toString(36).substring(2, 8).toUpperCase();
+}
 
 
   logout() {

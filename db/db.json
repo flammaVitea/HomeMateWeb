@@ -52,6 +52,24 @@
       "password": "$2b$10$30rJxMn4oA/ovH2rct3DieHwNR1zj.IrcG4dcz/Vlt141A0V1Tx4G",
       "householdId": "1",
       "gender": "male",
+      "avatarUrl": "https://i.pravatar.cc/150?img=17"
+    },
+    {
+      "id": "7",
+      "name": "test0123",
+      "email": "admin12345@example.com",
+      "password": "$2b$10$XMUt0p7zidYVE1tv1iBw8.NHvzDIxSeMSP2iiGySoh40nAL6ss4Pm",
+      "householdId": "1",
+      "gender": "male",
+      "avatarUrl": "https://i.pravatar.cc/150?img=10"
+    },
+    {
+      "id": "8",
+      "name": "ввв",
+      "email": "admin-h2@example.com",
+      "password": "$2b$10$PsjG1JZyjr5iUgdqOnM0We4io1VQXlBIX/KJpg8zvH93/OvPIA1u6",
+      "householdId": "be89",
+      "gender": "male",
       "avatarUrl": ""
     }
   ],
@@ -60,7 +78,12 @@
       "id": "1",
       "name": "My Smart Home",
       "ownerId": 1,
-      "inviteCode": "Z8JVQI"
+      "inviteCode": "IC7WQF"
+    },
+    {
+      "id": "be89",
+      "name": "ввв",
+      "inviteCode": "BHNWD7"
     }
   ],
   "inventory": [

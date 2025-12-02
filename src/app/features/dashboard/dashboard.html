@@ -10,14 +10,14 @@
       <span class="role-badge" [class.owner]="user.role === 'owner'">
         {{ user.role === 'owner' ? 'Власник' : 'Учасник' }}
       </span>
-      <button matButton="tonal" *ngIf="user.role === 'owner'" mat-raised-button (click)="generateNewCode()">
+      <button style="margin: 10px 0;" matButton="tonal" *ngIf="user.role === 'owner'" mat-raised-button (click)="generateNewCode()">
         Згенерувати новий код
       </button>
 
       <div class="invite-box" *ngIf="user.role === 'owner'">
       <p class="invite-label">Код запрошення:</p>
       <div class="invite-code">{{ inviteCode }}</div>
-        <button matButton="tonal" mat-raised-button color="primary" class="copy-btn" (click)="copyCode()">
+        <button style="margin: 10px 0;" matButton="tonal" mat-raised-button color="primary" class="copy-btn" (click)="copyCode()">
           Скопіювати код
         </button>
       </div>

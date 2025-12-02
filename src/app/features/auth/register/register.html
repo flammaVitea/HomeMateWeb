@@ -1,44 +1,87 @@
-  <div class="register-container">
-      <mat-card>
-      <h2>Реєстрація</h2>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<div class="register-container">
+  <mat-card>
+    <h2>Реєстрація</h2>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Ім’я</mat-label>
-          <input matInput formControlName="name" />
-        </mat-form-field>
+    <div class="toggle-buttons">
+      <button mat-button color="primary" (click)="mode='join'" [disabled]="mode==='join'">Приєднатися до будинку</button>
+      <button mat-button color="accent" (click)="mode='create'" [disabled]="mode==='create'">Створити новий будинок</button>
+    </div>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" />
-        </mat-form-field>
+    <!-- Форма приєднання -->
+    <form *ngIf="mode==='join'" [formGroup]="joinForm" (ngSubmit)="onJoinSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Ім’я</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Пароль</mat-label>
-          <input matInput type="password" formControlName="password" />
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Код запрошення</mat-label>
-          <input matInput formControlName="inviteCode" />
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Пароль</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Стать</mat-label>
-          <mat-select formControlName="gender">
-            <mat-option value="male">Чоловіча</mat-option>
-            <mat-option value="female">Жіноча</mat-option>
-          </mat-select>
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Код запрошення</mat-label>
+        <input matInput formControlName="inviteCode" />
+      </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>Стать</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="male">Чоловіча</mat-option>
+          <mat-option value="female">Жіноча</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Аватар URL</mat-label>
-          <input matInput formControlName="avatarUrl" placeholder="https://..." />
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Аватар URL</mat-label>
+        <input matInput formControlName="avatarUrl" placeholder="https://..." />
+      </mat-form-field>
 
+      <button mat-raised-button color="primary" type="submit">Приєднатися</button>
+    </form>
 
-        <button mat-raised-button color="primary" type="submit">Зареєструватися</button>
-      </form>
-    </mat-card>
-  </div>
+    <!-- Форма створення нового будинку -->
+    <form *ngIf="mode==='create'" [formGroup]="createForm" (ngSubmit)="onCreateSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Ім’я</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Пароль</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Назва нового будинку</mat-label>
+        <input matInput formControlName="houseName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Стать</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="male">Чоловіча</mat-option>
+          <mat-option value="female">Жіноча</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Аватар URL</mat-label>
+        <input matInput formControlName="avatarUrl" placeholder="https://..." />
+      </mat-form-field>
+
+      <button mat-raised-button color="accent" type="submit">Створити будинок</button>
+    </form>
+
+  </mat-card>
+</div>
