@@ -10,10 +10,12 @@
       <span class="role-badge" [class.owner]="user.role === 'owner'">
         {{ user.role === 'owner' ? 'Власник' : 'Учасник' }}
       </span>
-      <div class="invite-code" *ngIf="user.role === 'owner'">
-        <p>Код запрошення для нових членів сім'ї:</p>
-        <h3>{{ inviteCode }}</h3>
-      </div>
+      @if (user.role === 'owner') {
+        <div class="invite-code">
+          <p>Код запрошення для нових членів сім'ї:</p>
+          <h3>{{ inviteCode }}</h3>
+        </div>
+      }
     </div>
   </mat-card>
 
@@ -21,12 +23,14 @@
   <h3 class="section-title">Члени сім'ї</h3>
 
   <div class="family-grid">
-    <mat-card class="family-card" *ngFor="let member of familyMembers">
-      <img [src]="member.avatarUrl" class="avatar" />
-      <h3>{{ member.name }}</h3>
-      <p>{{ member.email }}</p>
-      <p>{{ member.gender === 'male' ? 'Чоловік' : 'Жінка' }}</p>
-    </mat-card>
+    @for (member of familyMembers; track member) {
+      <mat-card class="family-card">
+        <img [src]="member.avatarUrl" class="avatar" />
+        <h3>{{ member.name }}</h3>
+        <p>{{ member.email }}</p>
+        <p>{{ member.gender === 'male' ? 'Чоловік' : 'Жінка' }}</p>
+      </mat-card>
+    }
   </div>
 
   <!-- === ГОЛОВНІ МОДУЛІ === -->
