@@ -7,13 +7,15 @@ import { Household } from '../../core/services/household';
 import localeUk from '@angular/common/locales/uk';
 import { registerLocaleData } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { Router, RouterModule } from '@angular/router';
+
 
 registerLocaleData(localeUk);
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, RouterModule],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.scss'],
   providers: [
@@ -35,7 +37,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private familyService: FamilyService,
     private dashboardService: DashboardService,
-    private household: Household
+    private household: Household,
+    private router: Router
   ) {}
 
   async ngOnInit() {
@@ -44,8 +47,8 @@ export class DashboardComponent implements OnInit {
     const hh = await this.household.getHousehold(this.user.householdId);
     
     // встановлюємо роль користувача
-    this.user.role = hh.ownerId === Number(this.user.id) ? 'owner' : 'member';
 
+    this.user.role = hh.ownerId === this.user.id ? 'owner' : 'member';
     // якщо owner → генеруємо inviteCode
     if (this.user.role === 'owner') {
       this.inviteCode = await this.household.setInviteCode(this.user.householdId);
@@ -77,4 +80,5 @@ export class DashboardComponent implements OnInit {
     navigator.clipboard.writeText(this.inviteCode);
     alert('Код скопійовано!');
   }
+
 }

@@ -41,11 +41,13 @@
 
   <div class="grid">
 
-    <mat-card class="card">
-      <span class="icon material-icons">shopping_cart</span>
-      <h3>Список покупок</h3>
-      <p>Позицій: {{ shoppingCount }}</p>
-    </mat-card>
+    <a class="card-link" [routerLink]="['/shopping']" tabindex="0" role="link" aria-label="Список покупок">
+      <mat-card class="card">
+        <span class="icon material-icons">shopping_cart</span>
+        <h3>Список покупок</h3>
+        <p>Позицій: {{ shoppingCount }}</p>
+      </mat-card>
+    </a>
 
     <mat-card class="card">
       <span class="icon material-icons">event</span>

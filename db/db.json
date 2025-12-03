@@ -5,7 +5,7 @@
       "email": "admin@example.com",
       "name": "Admin User",
       "password": "$2b$10$W./jknHCfMwtHRrlvsuore5II/2s64DLIHjlVnDLP8MnIcm2RsreS",
-      "householdId": 1,
+      "householdId": "1",
       "gender": "male",
       "avatarUrl": "https://i.pravatar.cc/150?img=3"
     },
@@ -14,7 +14,7 @@
       "email": "user@example.com",
       "name": "House Member",
       "password": "$2b$10$W./jknHCfMwtHRrlvsuore5II/2s64DLIHjlVnDLP8MnIcm2RsreS",
-      "householdId": 1,
+      "householdId": "1",
       "gender": "female",
       "avatarUrl": "https://i.pravatar.cc/150?img=5"
     },
@@ -23,7 +23,7 @@
       "name": "Test123",
       "email": "admin2@example.com",
       "password": "$2b$10$W./jknHCfMwtHRrlvsuore5II/2s64DLIHjlVnDLP8MnIcm2RsreS",
-      "householdId": 2,
+      "householdId": "2",
       "gender": "male",
       "avatarUrl": "https://i.pravatar.cc/150?img=7"
     },
@@ -32,7 +32,7 @@
       "name": "Admin User",
       "email": "admin12@example.com",
       "password": "$2b$10$W./jknHCfMwtHRrlvsuore5II/2s64DLIHjlVnDLP8MnIcm2RsreS",
-      "householdId": 2,
+      "householdId": "2",
       "gender": "female",
       "avatarUrl": "https://i.pravatar.cc/150?img=10"
     },
@@ -41,7 +41,7 @@
       "name": "Test1234",
       "email": "user123@example.com",
       "password": "$2b$10$scXGsdiYKGil2EpgoGYnVOqyuJu39h1Qr5RIG5UCXLpkiM8dYbfYa",
-      "householdId": 1,
+      "householdId": "1",
       "gender": "male",
       "avatarUrl": "https://i.pravatar.cc/150?img=13"
     },
@@ -50,7 +50,7 @@
       "name": "test-code",
       "email": "test123@a.a",
       "password": "$2b$10$30rJxMn4oA/ovH2rct3DieHwNR1zj.IrcG4dcz/Vlt141A0V1Tx4G",
-      "householdId": 1,
+      "householdId": "1",
       "gender": "male",
       "avatarUrl": "https://i.pravatar.cc/150?img=17"
     },
@@ -59,7 +59,7 @@
       "name": "test0123",
       "email": "admin12345@example.com",
       "password": "$2b$10$XMUt0p7zidYVE1tv1iBw8.NHvzDIxSeMSP2iiGySoh40nAL6ss4Pm",
-      "householdId": 1,
+      "householdId": "1",
       "gender": "male",
       "avatarUrl": "https://i.pravatar.cc/150?img=10"
     },
@@ -68,7 +68,7 @@
       "name": "admin-h2",
       "email": "admin-h2@example.com",
       "password": "$2b$10$PsjG1JZyjr5iUgdqOnM0We4io1VQXlBIX/KJpg8zvH93/OvPIA1u6",
-      "householdId": 3,
+      "householdId": "3",
       "gender": "male",
       "avatarUrl": "https://i.pravatar.cc/150?img=16"
     },
@@ -77,7 +77,7 @@
       "name": "admin-h3",
       "email": "admin-h3@example.com",
       "password": "$2b$10$VO1h1yPuMa06ajVNL/nq2eIVEBeiG/dWnfT1bexKmKuCdF4xml2Uu",
-      "householdId": 4,
+      "householdId": "4",
       "gender": "female",
       "avatarUrl": "https://i.pravatar.cc/150?img=19"
     },
@@ -86,27 +86,27 @@
       "name": "admin-h4",
       "email": "admin-h4@example.com",
       "password": "$2b$10$.wfiH.KwHJ/ooe3Ls4TKeeGrzriPbrW5/qwaxHgqKvJScTUv7fBFW",
-      "householdId": 5,
+      "householdId": "5",
       "gender": "female",
-      "avatarUrl": ""
+      "avatarUrl": "https://i.pravatar.cc/150?img=19"
     },
     {
       "id": "11",
       "name": "admin-h5",
       "email": "admin-h5@example.com",
       "password": "$2b$10$kQM1zMcFjvj3mblpbU8Tj.MuPJhw7zOFwok5bZJ8fWBoRoXFK5tcS",
-      "householdId": 6,
+      "householdId": "6",
       "gender": "female",
-      "avatarUrl": ""
+      "avatarUrl": "https://i.pravatar.cc/150?img=19"
     },
     {
       "id": "12",
       "name": "admin-h6",
       "email": "admin-h6@example.com",
       "password": "$2b$10$Iw3VPn6fA4HIavuefTDB7.gGhKBpOG1kPYKS4ITLntJi/clUi8v72",
-      "householdId": 7,
+      "householdId": "7",
       "gender": "male",
-      "avatarUrl": ""
+      "avatarUrl": "https://i.pravatar.cc/150?img=19"
     },
     {
       "id": "13",
@@ -115,7 +115,7 @@
       "password": "$2b$10$BIQdrjB9HrBQPaQad0LkWuVOWGNQwNO6p/uZ27YOGZjpUQQz7ceSm",
       "householdId": "5",
       "gender": "male",
-      "avatarUrl": ""
+      "avatarUrl": "https://i.pravatar.cc/150?img=19"
     },
     {
       "id": "14",
@@ -124,23 +124,50 @@
       "password": "$2b$10$8soe/c9ZiY4Zg5OHiojRqeJF8r6efeg9cc4erSjC8j6M.JjLpdxie",
       "householdId": "6",
       "gender": "male",
-      "avatarUrl": ""
+      "avatarUrl": "https://i.pravatar.cc/150?img=19"
     },
     {
       "id": "15",
       "name": "admin-h7",
       "email": "admin-h7@example.com",
       "password": "$2b$10$.I32agzgRy/WVRCjcpY/5.ZbvXsxLKYtIE/L3si1HMByA8cyZ87Y6",
-      "householdId": 8,
+      "householdId": "8",
       "gender": "male",
-      "avatarUrl": ""
+      "avatarUrl": "https://i.pravatar.cc/150?img=19"
     },
     {
       "id": "16",
       "name": "admin-h8",
       "email": "admin-h8@example.com",
       "password": "$2b$10$BmugQYj2WB7sdu6QPhGas.OvOeOpuEWWTEi0Bfc/Qh9ConsutIR1m",
-      "householdId": 9,
+      "householdId": "9",
+      "gender": "male",
+      "avatarUrl": "https://i.pravatar.cc/150?img=19"
+    },
+    {
+      "id": "17",
+      "name": "admin-h9",
+      "email": "admin-h9@example.com",
+      "password": "$2b$10$0XaADcota4q7crYmofu4P.48o588Sc54SOQjWW7ocTwQX1yGqDlKe",
+      "householdId": "10",
+      "gender": "male",
+      "avatarUrl": "https://i.pravatar.cc/150?img=19"
+    },
+    {
+      "id": "18",
+      "name": "admin-h10",
+      "email": "admin-h10@example.com",
+      "password": "$2b$10$PtgiHUyGboAFVKwP6e2wZ.Y5O8Us5p0ZcTbJSbbtF5cIjDBKM547e",
+      "householdId": "a82ef704-4c0b-4ca8-afa9-438e93f128ad",
+      "gender": "male",
+      "avatarUrl": "https://i.pravatar.cc/150?img=19"
+    },
+    {
+      "id": "19",
+      "name": "user-h10",
+      "email": "user-h10@example.com",
+      "password": "$2b$10$8ec.h.b/k6F/mksAH1N7eOEuPMRallVtVyY.aSy8msLtoMlMEKiYa",
+      "householdId": "a82ef704-4c0b-4ca8-afa9-438e93f128ad",
       "gender": "male",
       "avatarUrl": ""
     }
@@ -149,49 +176,49 @@
     {
       "id": "1",
       "name": "h1",
-      "ownerId": 1,
-      "inviteCode": "YQHXWD"
+      "ownerId": "1",
+      "inviteCode": "TEMGUV"
     },
     {
       "id": "2",
       "name": "h2",
-      "ownerId": 3,
+      "ownerId": "3",
       "inviteCode": "6PS93L"
     },
     {
       "id": "3",
       "name": "h3",
-      "ownerId": 8,
+      "ownerId": "8",
       "inviteCode": "BQX7G7"
     },
     {
       "id": "4",
       "name": "h4",
-      "ownerId": 9,
+      "ownerId": "9",
       "inviteCode": "F6GW9M"
     },
     {
       "id": "5",
       "name": "h5",
-      "ownerId": 10,
-      "inviteCode": "0Z7BDN"
+      "ownerId": "10",
+      "inviteCode": "XLPY8Q"
     },
     {
       "id": "6",
       "name": "h6",
-      "ownerId": 11,
+      "ownerId": "11",
       "inviteCode": "YGVICW"
     },
     {
       "id": "7",
       "name": "h7",
-      "ownerId": 12,
+      "ownerId": "12",
       "inviteCode": "8F71WT"
     },
     {
       "id": "8",
       "name": "h7",
-      "ownerId": 15,
+      "ownerId": "15",
       "inviteCode": "UNAF0Q"
     },
     {
@@ -199,11 +226,24 @@
       "name": "h8",
       "ownerId": "16",
       "inviteCode": "2VQ4GG"
+    },
+    {
+      "id": "000b5527-b224-4d18-8e8d-b6e2a9ab68cc",
+      "name": "h9",
+      "ownerId": "17",
+      "inviteCode": "84GRTX"
+    },
+    {
+      "id": "a82ef704-4c0b-4ca8-afa9-438e93f128ad",
+      "name": "h10",
+      "ownerId": "18",
+      "inviteCode": "ERGYBZ"
     }
   ],
   "inventory": [
     {
       "id": "1",
+      "householdId": "1",
       "name": "Молоко 2.5%",
       "quantity": 1,
       "unit": "L",
@@ -213,6 +253,7 @@
     },
     {
       "id": "2",
+      "householdId": "1",
       "name": "Хліб білий",
       "quantity": 0,
       "unit": "pcs",
@@ -221,46 +262,36 @@
       "expiry": "2025-11-29"
     },
     {
-      "id": "3",
-      "name": "Яйця",
-      "quantity": 8,
+      "id": "1764772673933",
+      "householdId": "1",
+      "name": "Молоко",
+      "quantity": 4,
       "unit": "pcs",
-      "barcode": "4820003333333",
-      "location": "Fridge",
-      "expiry": "2025-12-01"
+      "expiry": null
     },
     {
-      "id": "4",
-      "name": "Миючий засіб для посуду",
-      "quantity": 0.2,
-      "unit": "L",
-      "barcode": "4820004444444",
-      "location": "Cleaning Cabinet",
-      "expiry": null
+      "id": "1764772678381",
+      "householdId": "1",
+      "name": "Хліб",
+      "quantity": 13,
+      "unit": "pcs",
+      "expiry": "2025-12-05"
     }
   ],
   "shoppingLists": [
     {
       "id": "1",
-      "createdBy": 1,
+      "householdId": "1",
+      "createdBy": "1",
       "createdAt": "2025-11-29",
-      "items": [
-        {
-          "name": "Хліб білий",
-          "qty": 1,
-          "checked": false
-        },
-        {
-          "name": "Молоко",
-          "qty": 2,
-          "checked": false
-        },
-        {
-          "name": "Миючий засіб",
-          "qty": 1,
-          "checked": true
-        }
-      ]
+      "items": []
+    },
+    {
+      "id": "1764749270758",
+      "householdId": "6",
+      "createdBy": "14",
+      "createdAt": "2025-12-03T08:07:50.758Z",
+      "items": []
     }
   ],
   "tasks": [

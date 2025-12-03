@@ -115,6 +115,43 @@
   margin-bottom: 0.3rem;
 }
 
+.card-link { 
+  display: inline-block; 
+  text-decoration: none; 
+  color: inherit; 
+}
 
+.card-link .card { 
+  cursor: pointer; 
+  transition: all 0.2s ease-in-out;
+}
 
+.card-link .card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  transition: all 0.2s ease-in-out;
+}
+.invite-section {
+  margin-top: 2rem;
+  text-align: center;
+}
 
+.invite-code {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  user-select: all;
+  cursor: pointer;
+}
+
+.invite-code:hover {
+  background: #e0e0e0;
+}
+
+.invite-instruction {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}

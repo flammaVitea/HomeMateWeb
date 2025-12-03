@@ -12,7 +12,7 @@ export interface User {
   email: string;
   name: string;
   password: string;
-  householdId: number;
+  householdId: string;
   gender: string;
   avatarUrl?: string;
 }
@@ -91,7 +91,7 @@ async createHouse(name: string, email: string, password: string, houseName: stri
     name,
     email,
     password: bcrypt.hashSync(password, 10),
-    householdId: 0, // тимчасово
+    householdId: '', // поки що пусто
     gender,
     avatarUrl
   };
@@ -99,21 +99,17 @@ async createHouse(name: string, email: string, password: string, houseName: stri
   await firstValueFrom(this.http.post(`${this.api}/users`, newUser));
 
   // 3. Створюємо новий будинок з ownerId = id нового користувача
-  const households: any[] = await firstValueFrom(this.http.get<any[]>(`${this.api}/households`));
-  const newHouseId = households.length + 1; // число, як у старих будинках
-
   const newHouse = {
-    id: (Math.floor(Math.random() * 10000)).toString(), // рядок
+    id: uuidv4(), // рядковий id
     name: houseName,
     ownerId: newUser.id,
     inviteCode: this.generateInviteCode()
   };
 
-
   await firstValueFrom(this.http.post(`${this.api}/households`, newHouse));
 
   // 4. Прив'язуємо користувача до будинку
-  newUser.householdId = newHouseId;
+  newUser.householdId = newHouse.id;
   await firstValueFrom(this.http.put(`${this.api}/users/${newUser.id}`, newUser));
 
   // 5. Зберігаємо токен та дані
@@ -122,6 +118,7 @@ async createHouse(name: string, email: string, password: string, houseName: stri
 
   return true;
 }
+
 
 // Допоміжна функція генерації inviteCode
 private generateInviteCode(): string {

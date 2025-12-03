@@ -17,22 +17,16 @@ export class Household {
   }
 
   // Запис коду у household
-  async setInviteCode(householdId: number) {
-    const code = this.generateInviteCode();
-
-    await firstValueFrom(
-      this.http.patch(`${this.api}/households/${householdId}`, {
-        inviteCode: code
-      })
-    );
-
-    return code;
+  async setInviteCode(householdId: string) {
+    const newCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+    const house = await firstValueFrom(this.http.get<any>(`${this.api}/households/${householdId}`));
+    house.inviteCode = newCode;
+    await firstValueFrom(this.http.put(`${this.api}/households/${householdId}`, house));
+    return newCode;
   }
 
   // Отримання info про household
-  async getHousehold(householdId: number) {
-    return await firstValueFrom(
-      this.http.get<any>(`${this.api}/households/${householdId}`)
-    );
+  async getHousehold(householdId: string) {
+    return firstValueFrom(this.http.get<any>(`${this.api}/households/${householdId}`));
   }
 }
