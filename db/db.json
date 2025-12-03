@@ -177,7 +177,7 @@
       "id": "1",
       "name": "h1",
       "ownerId": "1",
-      "inviteCode": "TEMGUV"
+      "inviteCode": "6YCF6M"
     },
     {
       "id": "2",
@@ -246,7 +246,7 @@
       "householdId": "1",
       "name": "Молоко 2.5%",
       "quantity": 1,
-      "unit": "L",
+      "unit": "l",
       "barcode": "4820001111111",
       "location": "Fridge",
       "expiry": "2025-12-03"
@@ -256,7 +256,7 @@
       "householdId": "1",
       "name": "Хліб білий",
       "quantity": 0,
-      "unit": "pcs",
+      "unit": "kg",
       "barcode": "4820002222222",
       "location": "Kitchen Shelf",
       "expiry": "2025-11-29"
@@ -266,16 +266,45 @@
       "householdId": "1",
       "name": "Молоко",
       "quantity": 4,
-      "unit": "pcs",
-      "expiry": null
+      "unit": "l",
+      "expiry": "2026-02-01"
     },
     {
       "id": "1764772678381",
       "householdId": "1",
       "name": "Хліб",
       "quantity": 13,
-      "unit": "pcs",
+      "unit": "l",
       "expiry": "2025-12-05"
+    },
+    {
+      "id": "1764791098151",
+      "householdId": "1",
+      "name": "Free memory",
+      "quantity": 109,
+      "unit": "g",
+      "expiry": "2222-12-22"
+    },
+    {
+      "id": "1764791964114",
+      "householdId": "1",
+      "name": "УЕГГ",
+      "quantity": 1,
+      "unit": "pcs"
+    },
+    {
+      "id": "1764792242772",
+      "householdId": "1",
+      "name": "нннн",
+      "quantity": 1,
+      "unit": "pcs"
+    },
+    {
+      "id": "1764792710105",
+      "householdId": "1",
+      "name": "лор",
+      "quantity": 1,
+      "unit": "pcs"
     }
   ],
   "shoppingLists": [
@@ -284,7 +313,14 @@
       "householdId": "1",
       "createdBy": "1",
       "createdAt": "2025-11-29",
-      "items": []
+      "items": [
+        {
+          "name": "еуіе123",
+          "qty": 1,
+          "checked": false,
+          "unit": "pcs"
+        }
+      ]
     },
     {
       "id": "1764749270758",
@@ -324,34 +360,6 @@
       "assignedTo": 1,
       "status": "pending",
       "recurrence": null
-    }
-  ],
-  "receipts": [
-    {
-      "id": "1",
-      "uploadedBy": 1,
-      "date": "2025-11-27",
-      "imageUrl": "receipt_1.jpg",
-      "parsed": {
-        "items": [
-          {
-            "name": "Молоко 2.5%",
-            "qty": 1,
-            "price": 42
-          },
-          {
-            "name": "Хліб білий",
-            "qty": 1,
-            "price": 28
-          },
-          {
-            "name": "Яйця 10 шт",
-            "qty": 1,
-            "price": 75
-          }
-        ],
-        "total": 145
-      }
     }
   ],
   "expenses": [

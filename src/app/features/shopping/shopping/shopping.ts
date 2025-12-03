@@ -11,7 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { InventoryService, InventoryItem } from '../../../core/services/inventory-service';
 import { ShoppingListService, ShoppingList, ShoppingListItem } from '../../../core/services/shopping-list-service';
 import { ExpensesService } from '../../../core/services/expenses-service';
-
+import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-shopping',
   standalone: true,
@@ -24,7 +24,8 @@ import { ExpensesService } from '../../../core/services/expenses-service';
     MatInputModule,
     MatIconModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   templateUrl: './shopping.html',
   styleUrls: ['./shopping.scss']
@@ -83,8 +84,8 @@ export class ShoppingComponent implements OnInit {
     };
 
     await this.shoppingService.addItem(this.shoppingList.id, item, this.user.householdId);
-    this.shoppingList.items.push(item);
-
+      this.shoppingList!.items = [...this.shoppingList!.items, item];
+      
     this.newItemName = '';
     this.newItemQty = 1;
     this.newItemUnit = 'pcs';
@@ -97,16 +98,20 @@ export class ShoppingComponent implements OnInit {
   }
 
   async removeItem(index: number) {
+    if (!this.shoppingList) return;
+
     this.shoppingList.items.splice(index, 1);
+
+    // обновлення UI
+    this.shoppingList.items = [...this.shoppingList.items];
+
     await this.shoppingService.updateList(this.shoppingList);
   }
-
 
   async updateInventoryItem(item: InventoryItem) {
     await this.inventoryService.updateItem(item);
     alert(`Збережено: ${item.name}`);
   }
-
 
   async addToInventory(item: ShoppingListItem) {
     await this.inventoryService.addOrUpdateItem(
@@ -117,6 +122,7 @@ export class ShoppingComponent implements OnInit {
       item.unit
     );
 
+    // Додаємо витрату
     if (item.price) {
       await this.expensesService.addExpense(
         item.price * item.qty,
@@ -125,7 +131,14 @@ export class ShoppingComponent implements OnInit {
       );
     }
 
+    // Позначаємо як виконаний
     item.checked = true;
-    await this.shoppingService.updateList(this.shoppingList);
+
+    // Оновлюємо список покупок
+    await this.shoppingService.updateList(this.shoppingList!);
+    this.shoppingList!.items = [...this.shoppingList!.items];
+
+    // 🔥 Оновлюємо інвентар одразу
+    this.inventory = await this.inventoryService.getInventory(this.user.householdId);
   }
 }

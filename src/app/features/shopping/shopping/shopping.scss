@@ -1,11 +1,19 @@
 .page-container {
   padding: 24px;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .section-title {
@@ -17,6 +25,16 @@
   grid-template-columns: 2fr 120px 160px auto;
   gap: 16px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 100px;
+    grid-template-rows: auto auto;
+    gap: 12px;
+
+    input[type="date"] {
+      grid-column: 1 / -1;
+    }
+  }
 }
 
 .full-table {
@@ -27,8 +45,42 @@
 
 mat-card {
   padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
+}
+
+table {
+  width: 100%;
+  font-size: 14px;
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
 }
 
 th {
   font-weight: 600;
+}
+
+/* Робимо колонку з кнопками компактною */
+.mat-column-edit,
+.mat-column-add,
+.mat-column-remove {
+  width: 50px;
+
+  @media (max-width: 600px) {
+    width: 40px;
+  }
+}
+
+/* Стискаємо input в таблицях */
+table input {
+  max-width: 100%;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
 }

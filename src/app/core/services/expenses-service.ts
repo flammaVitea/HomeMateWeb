@@ -21,7 +21,7 @@ export class ExpensesService {
     const newExpense = {
       id: Date.now().toString(),
       amount,
-      category: "Food",
+      category: "Їжа",
       date: new Date().toISOString().slice(0, 10),
       note,
       householdId

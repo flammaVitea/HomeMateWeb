@@ -31,7 +31,7 @@ export class InventoryService {
     return firstValueFrom(this.http.put(`${this.api}/${item.id}`, item));
   }
 
-  async addOrUpdateItem(householdId: string, name: string, qty: number, expiry?: string, unit = 'pcs'): Promise<any> {
+  async addOrUpdateItem(householdId: string, name: string, qty: number, expiry?: string, unit = 'шт'): Promise<any> {
     const items = await this.getInventory(householdId);
     const existing = items.find(i => i.name.toLowerCase() === name.toLowerCase());
 
