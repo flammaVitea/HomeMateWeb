@@ -1,1 +1,34 @@
-<p>calendar works!</p>
+<mat-card>
+  <h2 style="text-align: center;">📅 Календар завдань</h2>
+  <table mat-table [dataSource]="events" class="mat-elevation-z8">
+
+    <!-- Назва події -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Назва</th>
+      <td mat-cell *matCellDef="let event">{{ event.title }}</td>
+    </ng-container>
+
+    <!-- Дата -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Дата</th>
+      <td mat-cell *matCellDef="let event">{{ event.date }}</td>
+    </ng-container>
+
+    <!-- Опис -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Опис</th>
+      <td mat-cell *matCellDef="let event">{{ event.description }}</td>
+    </ng-container>
+
+    <!-- Призначені учасники -->
+    <ng-container matColumnDef="assigned">
+      <th mat-header-cell *matHeaderCellDef>Призначено</th>
+      <td mat-cell *matCellDef="let event">
+        {{ getAssignedNames(event.assignedTo) }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

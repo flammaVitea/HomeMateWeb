@@ -177,7 +177,7 @@
       "id": "1",
       "name": "h1",
       "ownerId": "1",
-      "inviteCode": "W1758N"
+      "inviteCode": "RH2OGP"
     },
     {
       "id": "2",
@@ -447,18 +447,20 @@
       "title": "Генеральне прибирання",
       "date": "2025-12-05",
       "description": "Кухня + ванна",
+      "householdId": "1",
       "assignedTo": [
-        1,
-        2
+        "1",
+        "2"
       ]
     },
     {
       "id": "2",
       "title": "Оплатити інтернет",
       "date": "2025-12-02",
-      "description": "",
+      "description": "Щомісячна оплата",
+      "householdId": "1",
       "assignedTo": [
-        1
+        "1"
       ]
     }
   ]
