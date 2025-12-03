@@ -177,7 +177,7 @@
       "id": "1",
       "name": "h1",
       "ownerId": "1",
-      "inviteCode": "6YCF6M"
+      "inviteCode": "W1758N"
     },
     {
       "id": "2",
@@ -257,7 +257,6 @@
       "name": "Хліб білий",
       "quantity": 0,
       "unit": "kg",
-      "barcode": "4820002222222",
       "location": "Kitchen Shelf",
       "expiry": "2025-11-29"
     },
@@ -305,6 +304,27 @@
       "name": "лор",
       "quantity": 1,
       "unit": "pcs"
+    },
+    {
+      "id": "1764794269248",
+      "householdId": "1",
+      "name": "b_admin",
+      "quantity": 3,
+      "unit": "pcs"
+    },
+    {
+      "id": "1764794981002",
+      "householdId": "1",
+      "name": "if-bo32-In-sw",
+      "quantity": 1,
+      "unit": "pcs"
+    },
+    {
+      "id": "1764794991651",
+      "householdId": "1",
+      "name": "віп",
+      "quantity": 8,
+      "unit": "pcs"
     }
   ],
   "shoppingLists": [
@@ -313,14 +333,7 @@
       "householdId": "1",
       "createdBy": "1",
       "createdAt": "2025-11-29",
-      "items": [
-        {
-          "name": "еуіе123",
-          "qty": 1,
-          "checked": false,
-          "unit": "pcs"
-        }
-      ]
+      "items": []
     },
     {
       "id": "1764749270758",
@@ -378,6 +391,54 @@
       "date": "2025-11-15",
       "note": "Електроенергія",
       "householdId": 1
+    },
+    {
+      "id": "1764796834070",
+      "amount": 100,
+      "category": "Food",
+      "date": "2025-12-03",
+      "note": "Покупка: віп",
+      "householdId": "1"
+    },
+    {
+      "id": "1764796838615",
+      "amount": 100,
+      "category": "Food",
+      "date": "2025-12-03",
+      "note": "Покупка: віп",
+      "householdId": "1"
+    },
+    {
+      "id": "1764796838980",
+      "amount": 100,
+      "category": "Food",
+      "date": "2025-12-03",
+      "note": "Покупка: віп",
+      "householdId": "1"
+    },
+    {
+      "id": "1764796904233",
+      "amount": 100,
+      "category": "Food",
+      "date": "2025-12-03",
+      "note": "Покупка: віп",
+      "householdId": "1"
+    },
+    {
+      "id": "1764796904648",
+      "amount": 100,
+      "category": "Food",
+      "date": "2025-12-03",
+      "note": "Покупка: віп",
+      "householdId": "1"
+    },
+    {
+      "id": "1764796905013",
+      "amount": 100,
+      "category": "Food",
+      "date": "2025-12-03",
+      "note": "Покупка: віп",
+      "householdId": "1"
     }
   ],
   "calendarEvents": [

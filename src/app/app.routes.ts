@@ -39,7 +39,12 @@ export const routes: Routes = [
         path: 'shopping',
         loadComponent: () =>
           import('./features/shopping/shopping/shopping').then(m => m.ShoppingComponent)
-      }
+      },
+      {
+        path: 'calendar',
+        loadComponent: () =>
+          import('./features/calendar/calendar/calendar').then(m => m.CalendarComponent)
+      },
     ]
   },
 

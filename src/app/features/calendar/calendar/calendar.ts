@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './calendar.html',
   styleUrl: './calendar.scss',
 })
-export class Calendar {
+export class CalendarComponent {
 
 }

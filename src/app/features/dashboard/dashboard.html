@@ -49,12 +49,14 @@
       </mat-card>
     </a>
 
-    <mat-card class="card">
-      <span class="icon material-icons">event</span>
-      <h3>Календар дому</h3>
-      <p>Найближча подія: {{ calendarDate | date:'longDate':'':'uk' }}</p>
-    </mat-card>
-
+        
+    <a class="card-link" [routerLink]="['/calendar']" tabindex="0" role="link" aria-label="Календар дому">
+      <mat-card class="card">
+        <span class="icon material-icons">event</span>
+        <h3>Календар дому</h3>
+        <p>Найближча подія: <br> {{ calendarDate | date:'longDate':'':'uk' }}</p>
+      </mat-card>
+    </a>
     <mat-card class="card">
       <span class="icon material-icons">savings</span>
       <h3>Бюджет</h3>

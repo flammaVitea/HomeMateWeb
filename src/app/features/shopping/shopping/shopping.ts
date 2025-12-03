@@ -71,27 +71,7 @@ export class ShoppingComponent implements OnInit {
     }
   }
 
-  async addShoppingItem() {
-    if (!this.newItemName || !this.newItemQty) return;
 
-    const item: ShoppingListItem = {
-      name: this.newItemName,
-      qty: this.newItemQty,
-      checked: false,
-      unit: this.newItemUnit,
-      expiry: this.newItemExpiry || undefined,
-      price: this.newItemPrice || undefined
-    };
-
-    await this.shoppingService.addItem(this.shoppingList.id, item, this.user.householdId);
-      this.shoppingList!.items = [...this.shoppingList!.items, item];
-      
-    this.newItemName = '';
-    this.newItemQty = 1;
-    this.newItemUnit = 'pcs';
-    this.newItemExpiry = '';
-    this.newItemPrice = null;
-  }
 
   async toggleItem(item: ShoppingListItem) {
     await this.shoppingService.toggleItemCompleted(item, this.shoppingList, this.user.householdId);
@@ -112,8 +92,38 @@ export class ShoppingComponent implements OnInit {
     await this.inventoryService.updateItem(item);
     alert(`Збережено: ${item.name}`);
   }
+  
+  async addShoppingItem() {
+    if (!this.newItemName || !this.newItemQty) return;
 
+    const item: ShoppingListItem = {
+      name: this.newItemName,
+      qty: this.newItemQty,
+      unit: this.newItemUnit,
+      checked: false,
+      expiry: this.newItemExpiry || undefined,
+      price: this.newItemPrice || undefined
+    };
+
+    // Додаємо у backend список покупок
+    await this.shoppingService.addItem(this.shoppingList!.id, item, this.user.householdId);
+
+    // Оновлюємо локальний список на сторінці
+    this.shoppingList!.items.push(item);
+
+    // Очищуємо форму
+    this.newItemName = '';
+    this.newItemQty = 1;
+    this.newItemUnit = 'pcs';
+    this.newItemExpiry = '';
+    this.newItemPrice = null;
+  }
+
+  // Додавання елемента у інвентар + витрати
   async addToInventory(item: ShoppingListItem) {
+    if (!this.shoppingList) return;
+
+    // Додаємо або оновлюємо інвентар
     await this.inventoryService.addOrUpdateItem(
       this.user.householdId,
       item.name,
@@ -122,7 +132,7 @@ export class ShoppingComponent implements OnInit {
       item.unit
     );
 
-    // Додаємо витрату
+    // Якщо ціна вказана — додаємо витрату
     if (item.price) {
       await this.expensesService.addExpense(
         item.price * item.qty,
@@ -131,14 +141,12 @@ export class ShoppingComponent implements OnInit {
       );
     }
 
-    // Позначаємо як виконаний
+    // Позначаємо як виконане
     item.checked = true;
+    await this.shoppingService.updateList(this.shoppingList);
 
-    // Оновлюємо список покупок
-    await this.shoppingService.updateList(this.shoppingList!);
-    this.shoppingList!.items = [...this.shoppingList!.items];
-
-    // 🔥 Оновлюємо інвентар одразу
-    this.inventory = await this.inventoryService.getInventory(this.user.householdId);
+    // Локально одразу оновлюємо таблицю
+    const index = this.shoppingList.items.findIndex(i => i.name === item.name && i.qty === item.qty);
+    if (index >= 0) this.shoppingList.items[index] = item;
   }
 }

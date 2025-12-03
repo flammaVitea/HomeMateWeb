@@ -22,9 +22,7 @@
           <mat-select [(ngModel)]="newItemUnit" name="unit">
             <mat-option value="pcs">шт</mat-option>
             <mat-option value="kg">кг</mat-option>
-            <mat-option value="g">г</mat-option>
             <mat-option value="l">л</mat-option>
-            <mat-option value="ml">мл</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -38,13 +36,7 @@
           <input matInput type="number" min="0" [(ngModel)]="newItemPrice" name="price">
         </mat-form-field>
 
-        <button 
-          mat-raised-button 
-          color="primary" 
-          type="button"
-          (click)="addShoppingItem()">
-          Додати
-        </button>
+        <button mat-raised-button color="primary" (click)="addShoppingItem()">Додати</button>
       </form>
 
       <table mat-table [dataSource]="shoppingList.items" class="mat-elevation-z1">

@@ -8,6 +8,7 @@ import localeUk from '@angular/common/locales/uk';
 import { registerLocaleData } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterModule } from '@angular/router';
+import { ExpensesService } from '../../core/services/expenses-service';
 
 
 registerLocaleData(localeUk);
@@ -38,7 +39,8 @@ export class DashboardComponent implements OnInit {
     private familyService: FamilyService,
     private dashboardService: DashboardService,
     private household: Household,
-    private router: Router
+    private router: Router,
+    private expensesService: ExpensesService
   ) {}
 
   async ngOnInit() {
@@ -68,7 +70,7 @@ export class DashboardComponent implements OnInit {
     this.shoppingCount = dashboardData.shoppingCount;
     this.calendarDate = dashboardData.calendarDate;
     this.budgetAllocated = dashboardData.budgetAllocated;
-    this.budgetSpent = dashboardData.budgetSpent;
+    this.budgetSpent = await this.expensesService.getTotalExpenses(this.user.householdId);
     this.tasksCount = dashboardData.tasksCount;
   }
 
