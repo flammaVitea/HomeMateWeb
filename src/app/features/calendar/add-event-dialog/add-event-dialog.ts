@@ -28,19 +28,9 @@ import { FamilyService } from '../../../core/services/family';
   ]
 })
 export class AddEventDialogComponent {
-  
-  event = {
-    title: '',
-    date: '',
-    description: '',
-    assignedTo: [] as string[]
-  };
 
+  event: any; // ця подія буде або нова, або існуюча
 
-  title = '';
-  date = '';
-  description = '';
-  assignedTo: string[] = [];
   members: any[] = [];
 
   constructor(
@@ -48,24 +38,37 @@ export class AddEventDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private calendarService: CalendarService,
     private familyService: FamilyService
-  ) {}
+  ) {
+    // Якщо передана подія - редагування, інакше створення нової
+    this.event = data.event ? { ...data.event } : {
+      title: '',
+      date: '',
+      description: '',
+      assignedTo: [],
+      householdId: data.householdId
+    };
+  }
 
   async ngOnInit() {
     this.members = await this.familyService.getMembers(this.data.householdId);
   }
 
   async save() {
-    const event = {
-      id: crypto.randomUUID(),
-      title: this.title,
-      date: this.date,
-      description: this.description,
-      householdId: this.data.householdId,
-      assignedTo: this.assignedTo
-    };
-
-    await this.calendarService.addEvent(event);
+    if (this.event.id) {
+      // редагування існуючої події
+      await this.calendarService.updateEvent(this.event);
+    } else {
+      // створення нової
+      this.event.id = crypto.randomUUID();
+      this.event.householdId = this.data.householdId; // додали householdId
+      await this.calendarService.addEvent(this.event);
+    }
 
     this.dialogRef.close(true);
+  }
+
+
+  async close() {
+    this.dialogRef.close();
   }
 }

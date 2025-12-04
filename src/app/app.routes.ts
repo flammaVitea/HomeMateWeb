@@ -38,13 +38,18 @@ export const routes: Routes = [
       {
         path: 'shopping',
         loadComponent: () =>
-          import('./features/shopping/shopping/shopping').then(m => m.ShoppingComponent)
+          import('./features/shopping/shopping').then(m => m.ShoppingComponent)
       },
       {
         path: 'calendar',
         loadComponent: () =>
           import('./features/calendar/calendar/calendar').then(m => m.CalendarComponent)
       },
+      {
+        path: 'planner',
+        loadComponent: () =>
+          import('./features/planner/planner/planner').then(m => m.TaskComponent)
+      }
     ]
   },
 

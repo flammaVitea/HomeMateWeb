@@ -177,7 +177,7 @@
       "id": "1",
       "name": "h1",
       "ownerId": "1",
-      "inviteCode": "09PEB2"
+      "inviteCode": "69VYAY"
     },
     {
       "id": "2",
@@ -352,7 +352,8 @@
       "dueDate": "2025-11-30",
       "assignedTo": 1,
       "status": "pending",
-      "recurrence": "weekly"
+      "recurrence": "weekly",
+      "householdId": 1
     },
     {
       "id": "2",
@@ -362,7 +363,8 @@
       "dueDate": "2025-11-29",
       "assignedTo": 2,
       "status": "completed",
-      "recurrence": "every-3-days"
+      "recurrence": "every-3-days",
+      "householdId": 1
     },
     {
       "id": "3",
@@ -372,7 +374,8 @@
       "dueDate": "2025-12-01",
       "assignedTo": 1,
       "status": "pending",
-      "recurrence": null
+      "recurrence": null,
+      "householdId": 1
     }
   ],
   "expenses": [
@@ -443,10 +446,10 @@
   ],
   "calendarEvents": [
     {
-      "id": "1",
-      "title": "День народження мами",
-      "date": "2025-12-05",
-      "description": "Святкування вдома, купити торт",
+      "id": "2",
+      "title": "Річниця стосунків",
+      "date": "2025-12-02",
+      "description": "План вечері та подарунок",
       "householdId": "1",
       "assignedTo": [
         "1",
@@ -454,25 +457,28 @@
       ]
     },
     {
-      "id": "2",
-      "title": "Річниця стосунків",
-      "date": "2025-12-02",
-      "description": "План вечері та подарунок",
-      "householdId": "1",
-      "assignedTo": [
-        "1"
-      ]
-    },
-    {
       "id": "ebeb",
       "title": "тестова подія",
       "date": "2025-12-10",
       "description": "-",
+      "householdId": "1",
       "assignedTo": [
         "2",
         "5",
         "6"
       ]
+    },
+    {
+      "id": "7a1f2253-fa4d-44c7-8f19-82f021aada98",
+      "title": "тест",
+      "date": "",
+      "description": "1111",
+      "assignedTo": [
+        "1",
+        "2",
+        "5"
+      ],
+      "householdId": "1"
     }
   ]
 }

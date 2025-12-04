@@ -1,1 +1,65 @@
-<p>planner works!</p>
+<mat-card class="task-card">
+  <div class="header" style="text-align: center;">
+    <h2>📝 Список завдань</h2>
+
+    <button 
+      *ngIf="household && isOwner"
+      mat-raised-button 
+      color="primary" 
+      style="margin-bottom: 10px;"
+      (click)="openTaskDialog()">
+      ➕ Додати завдання
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="tasks" class="mat-elevation-z8" *ngIf="household && tasks.length > 0">
+    
+    <!-- Назва -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Назва</th>
+      <td mat-cell *matCellDef="let task">{{ task.title }}</td>
+    </ng-container>
+
+    <!-- Дата -->
+    <ng-container matColumnDef="dueDate">
+      <th mat-header-cell *matHeaderCellDef>Термін</th>
+      <td mat-cell *matCellDef="let task">{{ task.dueDate | date:'yyyy-MM-dd' }}</td>
+    </ng-container>
+
+    <!-- Виконавець -->
+    <ng-container matColumnDef="assignedTo">
+      <th mat-header-cell *matHeaderCellDef>Виконавець</th>
+      <td mat-cell *matCellDef="let task">{{ getAssignedName(task.assignedTo) }}</td>
+    </ng-container>
+
+    <!-- Статус -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Статус</th>
+      <td mat-cell *matCellDef="let task">{{ task.status }}</td>
+    </ng-container>
+
+    <!-- Дії -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Дії</th>
+      <td mat-cell *matCellDef="let task">
+        <ng-container *ngIf="household && isOwner">
+          <button mat-icon-button color="primary" (click)="openTaskDialog(task)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteTask(task)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <div class="empty" *ngIf="household && tasks.length === 0">
+    <p>Немає жодного завдання 😔</p>
+    <p>Натисніть «Додати завдання», щоб створити перше.</p>
+  </div>
+</mat-card>

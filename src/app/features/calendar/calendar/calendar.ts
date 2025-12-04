@@ -5,6 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { FamilyService } from '../../../core/services/family';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 
 import { CalendarService, CalendarEvent } from '../../../core/services/calendar-event';
 import { AddEventDialogComponent } from '../add-event-dialog/add-event-dialog';
@@ -12,7 +14,7 @@ import { AddEventDialogComponent } from '../add-event-dialog/add-event-dialog';
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, MatTableModule, MatCardModule, MatButtonModule, MatIconModule],
   templateUrl: './calendar.html',
   styleUrls: ['./calendar.scss']
 })
@@ -21,7 +23,7 @@ export class CalendarComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('user') || '{}');
   familyMembers: { id: string; name: string }[] = [];
   events: CalendarEvent[] = [];
-  displayedColumns = ['title', 'date', 'description', 'assigned'];
+  displayedColumns = ['title', 'date', 'description', 'assigned', 'actions'];
 
 
   constructor(
@@ -63,6 +65,32 @@ household: any;
         });
       }
     });
+  }
+
+  editEvent(event: CalendarEvent) {
+    const dialogRef = this.dialog.open(AddEventDialogComponent, {
+      width: '400px',
+      data: { 
+        householdId: this.user.householdId,
+        event // передаємо подію для редагування
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(async result => {
+      if (result) {
+        // Оновлюємо події після редагування
+        this.events = await this.calendarService.getEvents(this.user.householdId);
+      }
+    });
+  }
+
+
+  deleteEvent(event: CalendarEvent) {
+    if (confirm("Видалити подію?")) {
+      this.calendarService.deleteEvent(event.id).then(async () => {
+        this.events = await this.calendarService.getEvents(this.user.householdId);
+      });
+    }
   }
 
 

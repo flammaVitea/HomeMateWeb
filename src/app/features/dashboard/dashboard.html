@@ -1,5 +1,4 @@
 <div class="dashboard">
-
   <!-- === ТВОЯ КАРТКА === -->
   <mat-card class="user-card">
     <div class="user-info">
@@ -47,9 +46,7 @@
         <h3>Список покупок</h3>
         <p>Позицій: {{ shoppingCount }}</p>
       </mat-card>
-    </a>
-
-        
+    </a> 
     <a class="card-link" [routerLink]="['/calendar']" tabindex="0" role="link" aria-label="Календар дому">
       <mat-card class="card">
         <span class="icon material-icons">event</span>
@@ -63,13 +60,12 @@
       <p>Виділено: {{ budgetAllocated }} ₴</p>
       <p>Витрачено: {{ budgetSpent }} ₴</p>
     </mat-card>
-
-    <mat-card class="card">
-      <span class="icon material-icons">check_circle</span>
-      <h3>Завдання</h3>
-      <p>{{ tasksCount }} активних завдань</p>
-    </mat-card>
-
+    <a class="card-link" [routerLink]="['/planner']">
+      <mat-card class="card">
+        <span class="icon material-icons">check_circle</span>
+        <h3>Завдання</h3>
+        <p>{{ tasksCount }} активних завдань</p>
+      </mat-card>
+    </a>
   </div>
-
 </div>

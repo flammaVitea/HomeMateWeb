@@ -8,9 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
-import { InventoryService, InventoryItem } from '../../../core/services/inventory-service';
-import { ShoppingListService, ShoppingList, ShoppingListItem } from '../../../core/services/shopping-list-service';
-import { ExpensesService } from '../../../core/services/expenses-service';
+import { InventoryService, InventoryItem } from '../../core/services/inventory-service';
+import { ShoppingListService, ShoppingList, ShoppingListItem } from '../../core/services/shopping-list-service';
+import { ExpensesService } from '../../core/services/expenses-service';
 import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-shopping',
