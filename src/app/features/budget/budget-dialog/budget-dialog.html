@@ -1,0 +1,108 @@
+<h2 class="dialog-title">
+  {{ expense.id ? '✏️ Редагувати витрату' : '➕ Нова витрата' }}
+</h2>
+
+<div class="dialog-body">
+<div class="box">   
+  <div class="field">
+    <label>Сума (₴)</label>
+    <input type="number" [(ngModel)]="expense.amount">
+  </div>
+
+
+    <div class="field">
+      <label>Категорія</label>
+      <select [(ngModel)]="expense.category">
+        <option value="Food"> Продукти</option>
+        <option value="Utilities"> Комуналка</option>
+        <option value="Transport"> Транспорт</option>
+        <option value="Home"> Дім</option>
+        <option value="Health"> Здоров’я</option>
+        <option value="Other"> Інше</option>
+      </select>
+    </div>
+
+  <div class="field">
+    <label>Дата</label>
+    <input type="date" [(ngModel)]="expense.date">
+  </div>
+
+  <div class="field">
+    <label>Нотатка</label>
+    <textarea rows="2" [(ngModel)]="expense.note"></textarea>
+  </div>
+</div>
+</div>
+
+<div class="dialog-actions">
+  <button class="btn cancel" (click)="close()">Скасувати</button>
+  <button class="btn save" (click)="save()">Зберегти</button>
+</div>
+<style scoped>
+  .box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #fafafa;
+    margin: 10px 0;
+  }
+  .dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .dialog-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .field label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .field input,
+  .field textarea {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+
+  .btn.cancel {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .btn.save {
+    background-color: #4caf50;
+    color: white;
+  }
+</style>

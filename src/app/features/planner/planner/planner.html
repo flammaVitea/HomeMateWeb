@@ -3,7 +3,7 @@
     <h2>📝 Список завдань</h2>
 
     <button 
-      *ngIf="household && isOwner"
+      *ngIf="household "
       mat-raised-button 
       color="primary" 
       style="margin-bottom: 10px;"
@@ -42,7 +42,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Дії</th>
       <td mat-cell *matCellDef="let task">
-        <ng-container *ngIf="household && isOwner">
+        <ng-container *ngIf="household ">
           <button mat-icon-button color="primary" (click)="openTaskDialog(task)">
             <mat-icon>edit</mat-icon>
           </button>

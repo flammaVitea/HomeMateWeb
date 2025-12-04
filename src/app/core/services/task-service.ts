@@ -1,52 +1,46 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 
 export interface Task {
   id: string;
   title: string;
   description: string;
-  priority: 'low' | 'medium' | 'high';
+  priority: string;
   dueDate: string;
   assignedTo: string;
-  status: 'pending' | 'completed';
+  status: string;
   recurrence: string | null;
   householdId: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
-  private storageKey = 'tasks';
+  private api = 'http://localhost:3000/tasks';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  private getAllTasks(): Task[] {
-    const data = localStorage.getItem(this.storageKey);
-    return data ? JSON.parse(data) : [];
+  getTasks(householdId: string) {
+    return firstValueFrom(
+      this.http.get<Task[]>(`${this.api}?householdId=${householdId}`)
+    );
   }
 
-  private saveAllTasks(tasks: Task[]) {
-    localStorage.setItem(this.storageKey, JSON.stringify(tasks));
+  addTask(task: Task) {
+    return firstValueFrom(
+      this.http.post<Task>(this.api, task)
+    );
   }
 
-  async getTasks(householdId: string): Promise<Task[]> {
-    const tasks = this.getAllTasks();
-    return tasks.filter(t => t.householdId === householdId);
+  updateTask(task: Task) {
+    return firstValueFrom(
+      this.http.put<Task>(`${this.api}/${task.id}`, task)
+    );
   }
 
-  async addTask(task: Task): Promise<void> {
-    const tasks = this.getAllTasks();
-    tasks.push(task);
-    this.saveAllTasks(tasks);
-  }
-
-  async updateTask(task: Task): Promise<void> {
-    let tasks = this.getAllTasks();
-    tasks = tasks.map(t => t.id === task.id ? task : t);
-    this.saveAllTasks(tasks);
-  }
-
-  async deleteTask(id: string): Promise<void> {
-    let tasks = this.getAllTasks();
-    tasks = tasks.filter(t => t.id !== id);
-    this.saveAllTasks(tasks);
+  deleteTask(id: string) {
+    return firstValueFrom(
+      this.http.delete(`${this.api}/${id}`)
+    );
   }
 }

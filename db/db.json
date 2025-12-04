@@ -177,7 +177,7 @@
       "id": "1",
       "name": "h1",
       "ownerId": "1",
-      "inviteCode": "69VYAY"
+      "inviteCode": "A98EO1"
     },
     {
       "id": "2",
@@ -333,7 +333,16 @@
       "householdId": "1",
       "createdBy": "1",
       "createdAt": "2025-11-29",
-      "items": []
+      "items": [
+        {
+          "name": "Піца",
+          "qty": 1,
+          "unit": "pcs",
+          "checked": false,
+          "expiry": "2025-02-02",
+          "price": 1000
+        }
+      ]
     },
     {
       "id": "1764749270758",
@@ -348,12 +357,12 @@
       "id": "1",
       "title": "Прибрати кухню",
       "description": "Плита, стіл, винести сміття",
-      "priority": "high",
+      "priority": "low",
       "dueDate": "2025-11-30",
-      "assignedTo": 1,
-      "status": "pending",
+      "assignedTo": "5",
+      "status": "в процесі",
       "recurrence": "weekly",
-      "householdId": 1
+      "householdId": "1"
     },
     {
       "id": "2",
@@ -361,21 +370,21 @@
       "description": "",
       "priority": "medium",
       "dueDate": "2025-11-29",
-      "assignedTo": 2,
-      "status": "completed",
+      "assignedTo": "1",
+      "status": "в процесі",
       "recurrence": "every-3-days",
-      "householdId": 1
+      "householdId": "1"
     },
     {
       "id": "3",
       "title": "Заміна лампочки в коридорі",
       "description": "Лампочка E27",
-      "priority": "low",
+      "priority": "medium",
       "dueDate": "2025-12-01",
       "assignedTo": 1,
-      "status": "pending",
+      "status": "Виконано",
       "recurrence": null,
-      "householdId": 1
+      "householdId": "1"
     }
   ],
   "expenses": [
@@ -442,6 +451,14 @@
       "date": "2025-12-03",
       "note": "Покупка: віп",
       "householdId": "1"
+    },
+    {
+      "id": "6ae7ecde-fa16-4de7-9dc5-0c8240be072b",
+      "amount": 200,
+      "category": "Розваги",
+      "date": "2025-12-17",
+      "note": "fddd",
+      "householdId": "1"
     }
   ],
   "calendarEvents": [
@@ -471,8 +488,18 @@
     {
       "id": "7a1f2253-fa4d-44c7-8f19-82f021aada98",
       "title": "тест",
-      "date": "",
+      "date": "2025-12-18",
       "description": "1111",
+      "assignedTo": [
+        "1"
+      ],
+      "householdId": "1"
+    },
+    {
+      "id": "0b0759cf-d866-45e7-b0f0-370dabdc27d8",
+      "title": "TEST",
+      "date": "2025-02-01",
+      "description": "",
       "assignedTo": [
         "1",
         "2",

@@ -54,12 +54,13 @@
         <p>Найближча подія: <br> {{ calendarDate | date:'longDate':'':'uk' }}</p>
       </mat-card>
     </a>
+    <a class="card-link" [routerLink]="['/budget']" tabindex="0" role="link" aria-label="Бюджет">
     <mat-card class="card">
       <span class="icon material-icons">savings</span>
       <h3>Бюджет</h3>
-      <p>Виділено: {{ budgetAllocated }} ₴</p>
       <p>Витрачено: {{ budgetSpent }} ₴</p>
     </mat-card>
+    </a>
     <a class="card-link" [routerLink]="['/planner']">
       <mat-card class="card">
         <span class="icon material-icons">check_circle</span>

@@ -1,1 +1,50 @@
-<p>budget works!</p>
+<mat-card class="budget-card">
+
+  <div class="header">
+    <h2>💰 Бюджет</h2>
+
+    <button mat-raised-button color="primary" (click)="openExpenseDialog()">
+      ➕ Додати витрату
+    </button>
+  </div>
+
+  <h3>Загальні витрати: <b>{{ total }} ₴</b></h3>
+
+  <table mat-table [dataSource]="expenses" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Сума</th>
+      <td mat-cell *matCellDef="let exp">{{ exp.amount }} ₴</td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Категорія</th>
+      <td mat-cell *matCellDef="let exp">{{ exp.category }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Дата</th>
+      <td mat-cell *matCellDef="let exp">{{ exp.date | date:'yyyy-MM-dd' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="note">
+      <th mat-header-cell *matHeaderCellDef>Нотатка</th>
+      <td mat-cell *matCellDef="let exp">{{ exp.note }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Дії</th>
+      <td mat-cell *matCellDef="let exp">
+        <button mat-icon-button color="primary" (click)="openExpenseDialog(exp)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteExpense(exp)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</mat-card>

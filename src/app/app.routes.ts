@@ -36,6 +36,11 @@ export const routes: Routes = [
           import('./features/dashboard/dashboard').then(m => m.DashboardComponent)
       },
       {
+        path: 'dashboard',
+        loadComponent: () =>
+          import('./features/dashboard/dashboard').then(m => m.DashboardComponent)
+      },
+      {
         path: 'shopping',
         loadComponent: () =>
           import('./features/shopping/shopping').then(m => m.ShoppingComponent)
@@ -49,7 +54,12 @@ export const routes: Routes = [
         path: 'planner',
         loadComponent: () =>
           import('./features/planner/planner/planner').then(m => m.TaskComponent)
-      }
+      },
+      {
+        path: 'budget',
+        loadComponent: () =>
+          import('./features/budget/budget/budget').then(m => m.BudgetComponent)
+      },
     ]
   },
 

@@ -24,11 +24,11 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Пріоритет</mat-label>
-    <mat-select [(ngModel)]="task.priority">
-      <mat-option value="low">Низький</mat-option>
-      <mat-option value="medium">Середній</mat-option>
-      <mat-option value="high">Високий</mat-option>
+    <mat-label>Статус</mat-label>
+    <mat-select [(ngModel)]="task.status">
+      <mat-option value="Виконано">Виконано</mat-option>
+      <mat-option value="в процесі">в процесі</mat-option>
+      <mat-option value="Не виконано">Не виконано</mat-option>
     </mat-select>
   </mat-form-field>
 

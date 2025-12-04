@@ -9,40 +9,32 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 
-import { TaskService } from '../../../core/services/task-service';
+import { TaskService, Task } from '../../../core/services/task-service';
 import { FamilyService } from '../../../core/services/family';
+
 
 @Component({
   selector: 'app-task-dialog',
   standalone: true,
+  imports: [CommonModule, FormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, MatIconModule],
   templateUrl: './task-dialog.html',
-  styleUrls: ['./task-dialog.scss'],
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatIconModule
-  ]
+  styleUrls: ['./task-dialog.scss']
 })
 export class TaskDialogComponent {
 
-  task: any = {
+  members: any[] = [];
+
+  task: Task = {
+    id: '',
     title: '',
     description: '',
-    priority: 'medium',
+    priority: '',
     dueDate: '',
     assignedTo: '',
     status: 'pending',
-    recurrence: ''
+    recurrence: null,
+    householdId: ''
   };
-
-  members: any[] = [];
-
-  priorities = ['low', 'medium', 'high'];
 
   constructor(
     private dialogRef: MatDialogRef<TaskDialogComponent>,
@@ -52,27 +44,25 @@ export class TaskDialogComponent {
   ) {}
 
   async ngOnInit() {
-    // Якщо передали існуюче завдання, заповнюємо форму
+    this.members = await this.familyService.getMembers(this.data.householdId);
+
+    // Якщо редагування – підставляємо дані
     if (this.data.task) {
       this.task = { ...this.data.task };
     }
-
-    // Завантажуємо учасників домогосподарства
-    this.members = await this.familyService.getMembers(this.data.householdId);
   }
 
   async save() {
-    if (this.task.id) {
-      // редагування існуючого
-      await this.taskService.updateTask(this.task);
-    } else {
-      // створення нового
+    this.task.householdId = this.data.householdId.toString();
+
+    if (!this.task.id) {
       this.task.id = crypto.randomUUID();
-      this.task.householdId = this.data.householdId;
       await this.taskService.addTask(this.task);
+    } else {
+      await this.taskService.updateTask(this.task);
     }
 
-    this.dialogRef.close(true); // закриваємо діалог і повертаємо true для оновлення списку
+    this.dialogRef.close(true);
   }
 
   close() {
