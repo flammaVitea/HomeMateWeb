@@ -1,6 +1,19 @@
-<mat-card>
-  <h2 style="text-align: center;">📅 Календар завдань</h2>
-  <table mat-table [dataSource]="events" class="mat-elevation-z8">
+<mat-card class="calendar-card">
+
+  <div class="header" style="text-align: center;">
+    <h2>📅 Календар подій</h2>
+
+      <button 
+        style="margin-bottom: 10px;"
+        *ngIf="isOwner" 
+        mat-raised-button 
+        color="primary" 
+        (click)="openAddEventDialog()">
+        ➕ Додати подію
+      </button>
+  </div>
+
+  <table mat-table [dataSource]="events" class="mat-elevation-z8" *ngIf="events.length > 0">
 
     <!-- Назва події -->
     <ng-container matColumnDef="title">
@@ -11,7 +24,7 @@
     <!-- Дата -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef>Дата</th>
-      <td mat-cell *matCellDef="let event">{{ event.date }}</td>
+      <td mat-cell *matCellDef="let event">{{ event.date | date:'yyyy-MM-dd' }}</td>
     </ng-container>
 
     <!-- Опис -->
@@ -30,5 +43,13 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
   </table>
+
+  <!-- Якщо список подій порожній -->
+  <div class="empty" *ngIf="events.length === 0">
+    <p>Немає жодної події 😔</p>
+    <p>Натисніть «Додати подію», щоб створити першу.</p>
+  </div>
+
 </mat-card>

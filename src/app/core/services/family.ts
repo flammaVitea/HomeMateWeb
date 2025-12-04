@@ -19,4 +19,11 @@ export class FamilyService {
       this.http.post(`${this.api}/users`, member)
     );
   }
+
+  getHousehold(id: number) {
+    return firstValueFrom(
+      this.http.get(`${this.api}/households/${id}`)
+    );
+  }
+
 }

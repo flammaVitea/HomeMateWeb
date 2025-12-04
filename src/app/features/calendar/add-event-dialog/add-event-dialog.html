@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Нова подія</h2>
+
+<mat-dialog-content>
+  <mat-form-field class="full" appearance="outline">
+    <mat-label>Назва</mat-label>
+    <input matInput [(ngModel)]="event.title">
+  </mat-form-field>
+
+  <mat-form-field class="full" appearance="outline">
+    <mat-label>Дата</mat-label>
+    <input matInput type="date" [(ngModel)]="event.date">
+  </mat-form-field>
+
+  <mat-form-field class="full" appearance="outline">
+    <mat-label>Опис</mat-label>
+    <textarea matInput rows="3" [(ngModel)]="event.description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="full" appearance="outline">
+    <mat-label>Учасники</mat-label>
+    <mat-select multiple [(ngModel)]="event.assignedTo">
+      <mat-option *ngFor="let m of members" [value]="m.id">
+        {{ m.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Скасувати</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="event">Створити</button>
+</mat-dialog-actions>
