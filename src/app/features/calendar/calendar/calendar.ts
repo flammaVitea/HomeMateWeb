@@ -23,7 +23,7 @@ export class CalendarComponent implements OnInit {
   user = JSON.parse(localStorage.getItem('user') || '{}');
   familyMembers: { id: string; name: string }[] = [];
   events: CalendarEvent[] = [];
-  displayedColumns = ['title', 'date', 'description', 'assigned', 'actions'];
+  displayedColumns: string[] = [];
 
 
   constructor(
@@ -34,13 +34,18 @@ export class CalendarComponent implements OnInit {
 
 household: any;
 
-  async ngOnInit() {
-    const householdId = this.user.householdId;
+async ngOnInit() {
+  const householdId = this.user.householdId;
 
-    this.household = await this.familyService.getHousehold(Number(householdId));
-    this.familyMembers = await this.familyService.getMembers(Number(householdId));
-    this.events = await this.calendarService.getEvents(householdId);
-  }
+  this.household = await this.familyService.getHousehold(Number(householdId));
+  this.familyMembers = await this.familyService.getMembers(Number(householdId));
+  this.events = await this.calendarService.getEvents(householdId);
+
+  // Встановлюємо колонки в залежності від того, чи це власник
+  this.displayedColumns = this.isOwner
+    ? ['title', 'date', 'description', 'assigned', 'actions']
+    : ['title', 'date', 'description', 'assigned'];
+}
 
   get isOwner(): boolean {
     return this.user.id?.toString() === this.household?.ownerId?.toString();
