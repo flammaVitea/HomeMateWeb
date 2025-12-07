@@ -177,7 +177,7 @@
       "id": "1",
       "name": "h1",
       "ownerId": "1",
-      "inviteCode": "6PSAYJ"
+      "inviteCode": "10AYX3"
     },
     {
       "id": "2",
@@ -552,6 +552,30 @@
       "assignedTo": [
         "6",
         "7"
+      ],
+      "householdId": "1"
+    },
+    {
+      "id": "78aa7b70-fabc-41f0-b610-d57967aa4504",
+      "title": "",
+      "date": "",
+      "description": "12345",
+      "assignedTo": [
+        "2",
+        "5",
+        "6"
+      ],
+      "householdId": "1"
+    },
+    {
+      "id": "b52ce694-77d3-40ba-80d1-4997ce3d9692",
+      "title": "test",
+      "date": "2004-02-12",
+      "description": "123456",
+      "assignedTo": [
+        "2",
+        "5",
+        "6"
       ],
       "householdId": "1"
     }

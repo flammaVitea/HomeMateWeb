@@ -57,17 +57,20 @@ async ngOnInit() {
     this.events = data ? JSON.parse(data) : [];
   }
 
-  openAddEventDialog() {
+  openAddEventDialog(event?: CalendarEvent) {
     const dialogRef = this.dialog.open(AddEventDialogComponent, {
       width: '400px',
-      data: { householdId: this.user.householdId }
+      data: { 
+        householdId: this.user.householdId,
+        event // передаємо подію для редагування, або undefined для нової
+      }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    // Після закриття діалогу
+    dialogRef.afterClosed().subscribe(async (result) => {
       if (result) {
-        this.calendarService.addEvent(result).then(() => {
-          this.loadEvents(); // оновити календар без reload сторінки
-        });
+        // перезавантажуємо події з сервісу
+        this.events = await this.calendarService.getEvents(this.user.householdId);
       }
     });
   }
