@@ -35,17 +35,33 @@ export class CalendarComponent implements OnInit {
 household: any;
 
 async ngOnInit() {
-  const householdId = this.user.householdId;
+  console.log("Loaded user:", this.user);
 
-  this.household = await this.familyService.getHousehold(Number(householdId));
-  this.familyMembers = await this.familyService.getMembers(Number(householdId));
+  if (!this.user || !this.user.householdId) {
+    console.error("householdId not found in user!");
+    return;
+  }
+
+  console.log("USER FROM LOCALSTORAGE:", this.user);
+  console.log("householdId:", this.user.householdId);
+
+
+  const householdId = this.user?.householdId;
+
+  if (!householdId) {
+    console.error("householdId is missing!");
+    return;
+  }
+
+  this.household = await this.familyService.getHousehold(householdId);
+  this.familyMembers = await this.familyService.getMembers(householdId);
   this.events = await this.calendarService.getEvents(householdId);
 
-  // Встановлюємо колонки в залежності від того, чи це власник
   this.displayedColumns = this.isOwner
     ? ['title', 'date', 'description', 'assigned', 'actions']
     : ['title', 'date', 'description', 'assigned'];
 }
+
 
   get isOwner(): boolean {
     return this.user.id?.toString() === this.household?.ownerId?.toString();

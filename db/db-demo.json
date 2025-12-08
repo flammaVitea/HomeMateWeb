@@ -4,8 +4,8 @@
       "id": "1",
       "name": "admin",
       "email": "admin@example.com",
-      "password": "$2b$10$Kw6jDfGrVBzzzD2oMDu5WOuGqUBoi1ky2DNR/K65b6IwoDVWhl39O",
-      "householdId": "93067a08-25ef-401f-8994-471103afafe7",
+      "password": "$2b$10$sUSShbXjqf1Zj7cjsE6/v.oQwJc/dTUX3VnasSgQfHYxqtLbStjX6",
+      "householdId": "2a63f93a-ab04-4d04-b55a-8d4e30d4dfd5",
       "gender": "male",
       "avatarUrl": "https://i.pravatar.cc/150?img=3"
     },
@@ -13,44 +13,44 @@
       "id": "2",
       "name": "user",
       "email": "user@example.com",
-      "password": "$2b$10$9udPfiI5o9micPxQGFdVIeqzVgZXaGjfVH3RZ7V72VEiiJwh4P4m6",
-      "householdId": "93067a08-25ef-401f-8994-471103afafe7",
+      "password": "$2b$10$SdMcQVq8IPRsZWRh/uhsYehZSZOqF4oRY9rKb7C.u.Laf5o/4dq5O",
+      "householdId": "2a63f93a-ab04-4d04-b55a-8d4e30d4dfd5",
       "gender": "female",
       "avatarUrl": "https://i.pravatar.cc/150?img=5"
     }
   ],
   "households": [
     {
-      "id": "93067a08-25ef-401f-8994-471103afafe7",
+      "id": "2a63f93a-ab04-4d04-b55a-8d4e30d4dfd5",
       "name": "Home",
       "ownerId": "1",
-      "inviteCode": "GNVI6Z"
+      "inviteCode": "32KRD8"
     }
   ],
   "inventory": [
     {
-      "id": "1765175885606",
-      "householdId": "93067a08-25ef-401f-8994-471103afafe7",
+      "id": "1765181410166",
+      "householdId": "2a63f93a-ab04-4d04-b55a-8d4e30d4dfd5",
       "name": "Молоко",
       "quantity": 1,
-      "unit": "l",
-      "expiry": "2025-12-18"
+      "unit": "л",
+      "expiry": "2025-12-11"
     }
   ],
   "shoppingLists": [
     {
-      "id": "1765175833946",
-      "householdId": "93067a08-25ef-401f-8994-471103afafe7",
-      "createdBy": "2",
-      "createdAt": "2025-12-08T06:37:13.946Z",
+      "id": "1765181377200",
+      "householdId": "2a63f93a-ab04-4d04-b55a-8d4e30d4dfd5",
+      "createdBy": "1",
+      "createdAt": "2025-12-08T08:09:37.200Z",
       "items": [
         {
           "name": "Молоко",
           "qty": 1,
           "unit": "l",
           "checked": true,
-          "expiry": "2025-12-18",
-          "price": 150
+          "expiry": "2025-12-11",
+          "price": 100
         }
       ]
     }
@@ -58,12 +58,12 @@
   "tasks": [],
   "expenses": [
     {
-      "id": "1765175885610",
-      "amount": 150,
+      "id": "1765181410172",
+      "amount": 100,
       "category": "Food",
       "date": "2025-12-08",
       "note": "Покупка: Молоко",
-      "householdId": "93067a08-25ef-401f-8994-471103afafe7"
+      "householdId": "2a63f93a-ab04-4d04-b55a-8d4e30d4dfd5"
     }
   ],
   "calendarEvents": []

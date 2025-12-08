@@ -4,7 +4,7 @@
 
     <!-- 🛒 Список покупок -->
     <mat-card class="shopping-card">
-      <h2 class="section-title">🛒 Список покупок</h2>
+      <h2 class="section-title" style="text-align: center;">Список покупок</h2>
 
       <form class="add-row">
         <mat-form-field appearance="outline" class="full">
@@ -98,7 +98,7 @@
 
     <!-- 🏠 Що є вдома -->
     <mat-card class="inventory-card">
-      <h2>🏠 Що є вдома</h2>
+      <h2 style="text-align: center;">Що є вдома</h2>
 
       <table mat-table [dataSource]="inventory" class="mat-elevation-z8">
 
@@ -121,11 +121,11 @@
           <th mat-header-cell *matHeaderCellDef>Одиниця</th>
           <td mat-cell *matCellDef="let item">
             <mat-select [(ngModel)]="item.unit">
-              <mat-option value="pcs">шт</mat-option>
-              <mat-option value="kg">кг</mat-option>
-              <mat-option value="g">г</mat-option>
-              <mat-option value="l">л</mat-option>
-              <mat-option value="ml">мл</mat-option>
+              <mat-option value="шт">шт</mat-option>
+              <mat-option value="кг">кг</mat-option>
+              <mat-option value="г">г</mat-option>
+              <mat-option value="л">л</mat-option>
+              <mat-option value="мл">мл</mat-option>
             </mat-select>
           </td>
         </ng-container>

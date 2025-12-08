@@ -1,7 +1,7 @@
 <mat-card class="calendar-card">
 
   <div class="header" style="text-align: center;">
-    <h2>📅 Календар подій</h2>
+    <h2 style="text-align: center;">Календар подій</h2>
 
     <button 
       style="margin-bottom: 10px;"
@@ -9,7 +9,7 @@
       mat-raised-button 
       color="primary" 
       (click)="openAddEventDialog()">
-      ➕ Додати подію
+      Додати подію
     </button>
   </div>
 
@@ -67,8 +67,8 @@
   </table>
 
   <!-- Якщо список подій порожній -->
-  <div class="empty" *ngIf="household && events.length === 0">
-    <p>Немає жодної події 😔</p>
+  <div class="empty" *ngIf="household && events.length === 0" style="text-align: center;">
+    <p>Немає жодної події</p>
     <p>Натисніть «Додати подію», щоб створити першу.</p>
   </div>
 

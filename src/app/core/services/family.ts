@@ -8,7 +8,7 @@ export class FamilyService {
 
   constructor(private http: HttpClient) {}
 
-  getMembers(householdId: number) {
+  getMembers(householdId: string) {
     return firstValueFrom(
       this.http.get<any[]>(`${this.api}/users?householdId=${householdId}`)
     );
@@ -20,10 +20,11 @@ export class FamilyService {
     );
   }
 
-  getHousehold(id: number) {
+  getHousehold(householdId: string) {
     return firstValueFrom(
-      this.http.get(`${this.api}/households/${id}`)
+      this.http.get(`${this.api}/households/${householdId}`)
     );
   }
+
 
 }

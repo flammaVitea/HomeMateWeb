@@ -33,8 +33,8 @@ export class TaskComponent implements OnInit {
   async ngOnInit() {
     const householdId = this.user.householdId;
 
-    this.household = await this.familyService.getHousehold(Number(householdId));
-    this.familyMembers = await this.familyService.getMembers(Number(householdId));
+    this.household = await this.familyService.getHousehold(householdId);
+    this.familyMembers = await this.familyService.getMembers(householdId);
     this.tasks = await this.taskService.getTasks(householdId);
   }
 

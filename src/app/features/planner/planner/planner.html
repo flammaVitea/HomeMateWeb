@@ -1,6 +1,6 @@
 <mat-card class="task-card">
   <div class="header" style="text-align: center;">
-    <h2>📝 Список завдань</h2>
+    <h2>Список завдань</h2>
 
     <button 
       *ngIf="household "
@@ -8,7 +8,7 @@
       color="primary" 
       style="margin-bottom: 10px;"
       (click)="openTaskDialog()">
-      ➕ Додати завдання
+      Додати завдання
     </button>
   </div>
 
@@ -58,8 +58,8 @@
 
   </table>
 
-  <div class="empty" *ngIf="household && tasks.length === 0">
-    <p>Немає жодного завдання 😔</p>
+  <div class="empty" *ngIf="household && tasks.length === 0" style="text-align: center;">
+    <p>Немає жодного завдання</p>
     <p>Натисніть «Додати завдання», щоб створити перше.</p>
   </div>
 </mat-card>
