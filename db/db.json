@@ -177,7 +177,11 @@
       "id": "1",
       "name": "h1",
       "ownerId": "1",
+<<<<<<< HEAD
       "inviteCode": "DI7X6T"
+=======
+      "inviteCode": "10AYX3"
+>>>>>>> 1a68f49825da0bd9a293b5cf6ffe7728af1ad746
     },
     {
       "id": "2",
@@ -320,11 +324,12 @@
       "unit": "pcs"
     },
     {
-      "id": "1764794991651",
+      "id": "1765134315760",
       "householdId": "1",
-      "name": "віп",
-      "quantity": 8,
-      "unit": "pcs"
+      "name": "Піца",
+      "quantity": 1,
+      "unit": "pcs",
+      "expiry": "2025-02-02"
     }
   ],
   "shoppingLists": [
@@ -338,7 +343,7 @@
           "name": "Піца",
           "qty": 1,
           "unit": "pcs",
-          "checked": false,
+          "checked": true,
           "expiry": "2025-02-02",
           "price": 1000
         }
@@ -459,6 +464,30 @@
       "date": "2025-12-17",
       "note": "fddd",
       "householdId": "1"
+    },
+    {
+      "id": "33448ea1-91b9-4e00-8b97-f20202f2ebdd",
+      "amount": 4000,
+      "category": "Home",
+      "date": "2025-12-07",
+      "note": "За світло",
+      "householdId": "1"
+    },
+    {
+      "id": "1765134315768",
+      "amount": 1000,
+      "category": "Food",
+      "date": "2025-12-07",
+      "note": "Покупка: Піца",
+      "householdId": "1"
+    },
+    {
+      "id": "7b7249cc-9810-4e4e-8661-c6db25b05661",
+      "amount": 0,
+      "category": "",
+      "date": "2025-12-03",
+      "note": "",
+      "householdId": "1"
     }
   ],
   "calendarEvents": [
@@ -504,6 +533,53 @@
         "1",
         "2",
         "5"
+      ],
+      "householdId": "1"
+    },
+    {
+      "id": "8053ddc0-e3ac-439c-a537-6ede2498d4df",
+      "title": "test",
+      "date": "",
+      "description": "-",
+      "assignedTo": [
+        "2",
+        "5",
+        "6"
+      ],
+      "householdId": "1"
+    },
+    {
+      "id": "84a66a02-50b7-4b49-96b5-9bc216dbbc9f",
+      "title": "1111",
+      "date": "2025-12-17",
+      "description": "11111",
+      "assignedTo": [
+        "6",
+        "7"
+      ],
+      "householdId": "1"
+    },
+    {
+      "id": "78aa7b70-fabc-41f0-b610-d57967aa4504",
+      "title": "",
+      "date": "",
+      "description": "12345",
+      "assignedTo": [
+        "2",
+        "5",
+        "6"
+      ],
+      "householdId": "1"
+    },
+    {
+      "id": "b52ce694-77d3-40ba-80d1-4997ce3d9692",
+      "title": "test",
+      "date": "2004-02-12",
+      "description": "123456",
+      "assignedTo": [
+        "2",
+        "5",
+        "6"
       ],
       "householdId": "1"
     }

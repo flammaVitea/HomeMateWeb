@@ -49,7 +49,7 @@ export class ShoppingComponent implements OnInit {
   newItemPrice: number | null = null;
   newItemUnit = 'pcs';
 
-  inventoryColumns = ['name', 'quantity', 'unit', 'expiry', 'edit'];
+  inventoryColumns = ['name', 'quantity', 'unit', 'expiry', 'edit', 'remove'];
   shoppingColumns = ['checked', 'name', 'qty', 'unit', 'expiry', 'price', 'add', 'remove'];
 
   constructor(
@@ -148,5 +148,13 @@ export class ShoppingComponent implements OnInit {
     // Локально одразу оновлюємо таблицю
     const index = this.shoppingList.items.findIndex(i => i.name === item.name && i.qty === item.qty);
     if (index >= 0) this.shoppingList.items[index] = item;
+  }
+
+  async removeInventoryItem(item: InventoryItem) {
+    if (!confirm(`Видалити ${item.name}?`)) return;
+
+    await this.inventoryService.deleteItem(item.id);
+
+    this.inventory = this.inventory.filter(i => i.id !== item.id);
   }
 }

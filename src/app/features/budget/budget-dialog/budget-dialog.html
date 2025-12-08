@@ -1,4 +1,4 @@
-<h2 class="dialog-title">
+<h2 class="dialog-title" style="text-align: center;">
   {{ expense.id ? '✏️ Редагувати витрату' : '➕ Нова витрата' }}
 </h2>
 
@@ -12,7 +12,8 @@
 
     <div class="field">
       <label>Категорія</label>
-      <select [(ngModel)]="expense.category">
+      <select [(ngModel)]="expense.category" style="padding: 8px;">
+        <option value=""> ---</option>
         <option value="Food"> Продукти</option>
         <option value="Utilities"> Комуналка</option>
         <option value="Transport"> Транспорт</option>
