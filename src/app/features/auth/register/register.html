@@ -1,12 +1,19 @@
 <div class="register-container">
   <mat-card>
-    <h2>Реєстрація</h2>
+    <h2 style="text-align: center;">Реєстрація</h2>
+    <div class="mode-buttons" style="margin-bottom: 16px;">
+      <button mat-button 
+              [color]="mode === 'join' ? 'primary' : ''"
+              (click)="mode = 'join'">
+        Приєднатися до будинку
+      </button>
 
-    <!-- Перемикач режиму -->
-    <mat-button-toggle-group [(ngModel)]="mode">
-      <mat-button-toggle value="join">Приєднатися до будинку</mat-button-toggle>
-      <mat-button-toggle value="create">Створити новий будинок</mat-button-toggle>
-    </mat-button-toggle-group>
+      <button mat-button
+              [color]="mode === 'create' ? 'primary' : ''"
+              (click)="mode = 'create'">
+        Створити новий будинок
+      </button>
+    </div>
 
     <!-- Форма приєднання -->
     <form *ngIf="mode === 'join'" [formGroup]="joinForm" (ngSubmit)="onJoinSubmit()">

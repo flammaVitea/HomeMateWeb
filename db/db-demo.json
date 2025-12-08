@@ -2,131 +2,69 @@
   "users": [
     {
       "id": "1",
+      "name": "admin",
       "email": "admin@example.com",
-      "name": "Admin User",
-      "password": "$2b$10$W./jknHCfMwtHRrlvsuore5II/2s64DLIHjlVnDLP8MnIcm2RsreS",
-      "householdId": "1",
+      "password": "$2b$10$Kw6jDfGrVBzzzD2oMDu5WOuGqUBoi1ky2DNR/K65b6IwoDVWhl39O",
+      "householdId": "93067a08-25ef-401f-8994-471103afafe7",
       "gender": "male",
       "avatarUrl": "https://i.pravatar.cc/150?img=3"
     },
     {
       "id": "2",
+      "name": "user",
       "email": "user@example.com",
-      "name": "House Member",
-      "password": "$2b$10$W./jknHCfMwtHRrlvsuore5II/2s64DLIHjlVnDLP8MnIcm2RsreS",
-      "householdId": "1",
+      "password": "$2b$10$9udPfiI5o9micPxQGFdVIeqzVgZXaGjfVH3RZ7V72VEiiJwh4P4m6",
+      "householdId": "93067a08-25ef-401f-8994-471103afafe7",
       "gender": "female",
       "avatarUrl": "https://i.pravatar.cc/150?img=5"
     }
   ],
-
   "households": [
     {
-      "id": "1",
-      "name": "Home A",
+      "id": "93067a08-25ef-401f-8994-471103afafe7",
+      "name": "Home",
       "ownerId": "1",
-      "inviteCode": "ABC123"
+      "inviteCode": "GNVI6Z"
     }
   ],
-
   "inventory": [
     {
-      "id": "1",
-      "householdId": "1",
+      "id": "1765175885606",
+      "householdId": "93067a08-25ef-401f-8994-471103afafe7",
       "name": "Молоко",
-      "quantity": 2,
-      "unit": "l",
-      "expiry": "2025-12-30"
-    },
-    {
-      "id": "2",
-      "householdId": "1",
-      "name": "Хліб",
       "quantity": 1,
-      "unit": "pcs",
-      "expiry": "2025-11-29"
+      "unit": "l",
+      "expiry": "2025-12-18"
     }
   ],
-
   "shoppingLists": [
     {
-      "id": "1",
-      "householdId": "1",
-      "createdBy": "1",
-      "createdAt": "2025-11-29",
+      "id": "1765175833946",
+      "householdId": "93067a08-25ef-401f-8994-471103afafe7",
+      "createdBy": "2",
+      "createdAt": "2025-12-08T06:37:13.946Z",
       "items": [
         {
-          "name": "Піца",
+          "name": "Молоко",
           "qty": 1,
-          "unit": "pcs",
-          "checked": false,
-          "expiry": "2025-02-02",
-          "price": 100
+          "unit": "l",
+          "checked": true,
+          "expiry": "2025-12-18",
+          "price": 150
         }
       ]
     }
   ],
-
-  "tasks": [
-    {
-      "id": "1",
-      "title": "Прибрати кухню",
-      "description": "Плита, стіл, сміття",
-      "priority": "high",
-      "dueDate": "2025-11-30",
-      "assignedTo": "1",
-      "status": "pending",
-      "recurrence": "weekly",
-      "householdId": "1"
-    },
-    {
-      "id": "2",
-      "title": "Полити квіти",
-      "description": "",
-      "priority": "medium",
-      "dueDate": "2025-11-29",
-      "assignedTo": "2",
-      "status": "completed",
-      "recurrence": null,
-      "householdId": "1"
-    }
-  ],
-
+  "tasks": [],
   "expenses": [
     {
-      "id": "1",
-      "amount": 145,
+      "id": "1765175885610",
+      "amount": 150,
       "category": "Food",
-      "date": "2025-11-27",
-      "note": "Продукти з магазину",
-      "householdId": "1"
-    },
-    {
-      "id": "2",
-      "amount": 950,
-      "category": "Utilities",
-      "date": "2025-11-15",
-      "note": "Електроенергія",
-      "householdId": "1"
+      "date": "2025-12-08",
+      "note": "Покупка: Молоко",
+      "householdId": "93067a08-25ef-401f-8994-471103afafe7"
     }
   ],
-
-  "calendarEvents": [
-    {
-      "id": "1",
-      "title": "Генеральне прибирання",
-      "date": "2025-12-05",
-      "description": "Кухня + ванна",
-      "householdId": "1",
-      "assignedTo": ["1", "2"]
-    },
-    {
-      "id": "2",
-      "title": "Оплатити інтернет",
-      "date": "2025-12-02",
-      "description": "Щомісячна оплата",
-      "householdId": "1",
-      "assignedTo": ["1"]
-    }
-  ]
+  "calendarEvents": []
 }
